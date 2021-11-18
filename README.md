@@ -15,10 +15,13 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 # İş Bölümü #
 
-İbrahim Yavuz - UI/UX , Backend Geliştirici
-Furkan Yıldırım - Backend Geliştirici
-Mehmet Akif Şahin - Dökümantasyon - İletişim 
-Fatih Yılmaz - Proje Yöneticisi 
+Proje Üyesi  | Görevleri
+------------- | -------------
+İbrahim Yavuz   | UI/UX , Backend Geliştirici
+Furkan Yıldırım  |  Backend Geliştirici
+Mehmet Akif Şahin | Dökümantasyon - İletişim 
+Fatih Yılmaz | Proje Yöneticisi 
+
 
 
 
