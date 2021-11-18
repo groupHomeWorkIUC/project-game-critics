@@ -34,7 +34,10 @@ Fatih Yılmaz | Proje Yöneticisi
 
 
 
+# Jira # 
 
+![WhatsApp Image 2021-11-18 at 09 49 07](https://user-images.githubusercontent.com/61662546/142366616-6c3954c1-572b-49d6-bc40-036db4898812.jpeg)
+![WhatsApp Image 2021-11-18 at 09 48 49](https://user-images.githubusercontent.com/61662546/142366620-b80ca662-e124-4ce5-9263-d5c13e8eab36.jpeg)
 
 
 
