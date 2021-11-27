@@ -28,8 +28,12 @@ Fatih Yılmaz | Proje Yöneticisi
 
 
 
-# Örnek Tasarım #
-![WhatsApp Image 2021-11-18 at 00 56 32 (1)](https://user-images.githubusercontent.com/61662546/142364850-b7e636ad-9e64-4a15-acc2-0c7d4c55521f.jpeg)
+# Sayfa tasarımlarımız devam ediyor #
+![Screen Shot 2021-11-25 at 12 08 48](https://user-images.githubusercontent.com/61706383/143412553-e892d5e2-8476-4a9b-a6db-ce988503859a.png)
+![Screen Shot 2021-11-25 at 12 12 39](https://user-images.githubusercontent.com/61706383/143413086-fe8c7926-795d-4d4f-a06b-0aaf61c90fd7.png)
+![Screen Shot 2021-11-25 at 12 13 18](https://user-images.githubusercontent.com/61706383/143413096-24e4ef30-10c4-465e-b992-85f42d6ddab6.png)
+
+
 
 
 
