@@ -4,10 +4,10 @@ import 'package:project_game_critics/languages/english.dart';
 
 class LocalizationService extends Translations {
   // Default locale
-  static final locale = Locale('en', 'US');
+  static const locale = Locale('en', 'US');
 
   // fallbackLocale saves the day when the locale gets in trouble
-  static final fallbackLocale = Locale('tr', 'TR');
+  static const fallbackLocale = Locale('en', 'US');
 
   // Supported languages
   // Needs to be same order with locales
@@ -17,7 +17,7 @@ class LocalizationService extends Translations {
 
   // Supported locales
   // Needs to be same order with langs
-  static final locales = [
+  static const locales = [
     Locale('en', 'US'),
   ];
 

@@ -4,15 +4,15 @@ import 'package:project_game_critics/pages/login_page.dart';
 import 'package:project_game_critics/pages/splash_screen.dart';
 
 class RouteManagement {
-  static final initialRoute = '/Splash';
+  static const initialRoute = '/Splash';
   static final List<GetPage> routeList = [
     GetPage(
       name: '/Splash',
-      page: () => SplashScreen(),
+      page: () => const SplashScreen(),
     ),
     GetPage(
       name: '/Login',
-      page: () => LoginPage(),
+      page: () => const LoginPage(),
       binding: InitialBinding(),
     ),
   ];

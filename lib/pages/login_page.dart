@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/controllers/login_controller.dart';
-import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/widgets/custom_primary_button.dart';
 import 'package:project_game_critics/widgets/input_field.dart';
+import 'package:project_game_critics/widgets/password_field.dart';
 
 class LoginPage extends GetView<LoginController> {
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,21 +20,10 @@ class LoginPage extends GetView<LoginController> {
           children: [
             CustomInputField(
               inputFieldText: TranslateHelper.email,
-              inputFieldIcon: Icon(
-                Icons.email,
-                color: DarkThemeColors.greyTextColor,
-                size: 20.0,
-              ),
+              inputFieldIcon: Icons.email,
             ),
             const SizedBox(height: 10),
-            CustomInputField(
-              inputFieldText: TranslateHelper.name,
-              inputFieldIcon: Icon(
-                Icons.person,
-                color: DarkThemeColors.greyTextColor,
-                size: 20.0,
-              ),
-            ),
+            const PasswordField(),
             const SizedBox(height: 30),
             PrimaryButton(
               text: TranslateHelper.login,
@@ -41,6 +32,11 @@ class LoginPage extends GetView<LoginController> {
             const SizedBox(height: 30),
             Text(
               TranslateHelper.dontHaveAnAccountSignUp,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            const SizedBox(height: 30),
+            Text(
+              TranslateHelper.continueWithoutLogin,
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ],

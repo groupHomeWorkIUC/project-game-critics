@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
+import 'package:project_game_critics/helpers/translate_helper.dart';
 
-class CustomInputField extends StatefulWidget {
-  final String? inputFieldText;
-  final IconData inputFieldIcon;
-  const CustomInputField(
-      {Key? key, required this.inputFieldText, required this.inputFieldIcon})
-      : super(key: key);
+class PasswordField extends StatefulWidget {
+  const PasswordField({Key? key}) : super(key: key);
 
   @override
-  _CustomInputFieldState createState() => _CustomInputFieldState();
+  _PasswordFieldState createState() => _PasswordFieldState();
 }
 
-class _CustomInputFieldState extends State<CustomInputField> {
+class _PasswordFieldState extends State<PasswordField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,15 +19,18 @@ class _CustomInputFieldState extends State<CustomInputField> {
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextField(
+        obscureText: true,
+        enableSuggestions: false,
+        autocorrect: false,
         style: TextStyle(color: DarkThemeColors.greyTextColor),
         decoration: InputDecoration(
           border: InputBorder.none,
-          hintText: widget.inputFieldText,
+          hintText: TranslateHelper.password,
           icon: Icon(
-                widget.inputFieldIcon,
-                color: DarkThemeColors.greyTextColor,
-                size: 20.0,
-              ),
+            Icons.lock,
+            color: DarkThemeColors.greyTextColor,
+            size: 20.0,
+          ),
         ),
       ),
     );

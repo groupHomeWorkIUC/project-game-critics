@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 
 final darkTheme = ThemeData(
+  fontFamily: 'Poppins',
   scaffoldBackgroundColor: DarkThemeColors.backgroundColor,
   appBarTheme: AppBarTheme(
       backgroundColor: DarkThemeColors.backgroundColor,
@@ -22,5 +23,10 @@ final darkTheme = ThemeData(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         )),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    hintStyle: TextStyle(
+      color: DarkThemeColors.greyTextColor,
+    ),
   ),
 );
