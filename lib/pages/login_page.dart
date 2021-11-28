@@ -11,35 +11,47 @@ class LoginPage extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        margin: const EdgeInsets.only(top: 50, right: 20, left: 20),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomInputField(
-              inputFieldText: TranslateHelper.email,
-              inputFieldIcon: Icons.email,
-            ),
-            const SizedBox(height: 10),
-            const PasswordField(),
-            const SizedBox(height: 30),
-            PrimaryButton(
-              text: TranslateHelper.login,
-              onPressed: controller.login,
-            ),
-            const SizedBox(height: 30),
-            Text(
-              TranslateHelper.dontHaveAnAccountSignUp,
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-            const SizedBox(height: 30),
-            Text(
-              TranslateHelper.continueWithoutLogin,
-              style: Theme.of(context).textTheme.bodyText1,
-            ),
-          ],
+    return WillPopScope(
+      onWillPop: () async {
+        Get.snackbar("QUIT", "Do you really want to quit?");
+        return true;
+      },
+      child: Scaffold(
+        body: Container(
+          margin: const EdgeInsets.only(right: 20, left: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustomInputField(
+                inputFieldText: TranslateHelper.email,
+                inputFieldIcon: Icons.email,
+              ),
+              const SizedBox(height: 10),
+              const PasswordField(),
+              const SizedBox(height: 20),
+              PrimaryButton(
+                text: TranslateHelper.login,
+                onPressed: controller.login,
+              ),
+              const SizedBox(height: 20),
+              TextButton(
+                child: Text(TranslateHelper.dontHaveAnAccountSignUp,
+                    style: Theme.of(context).textTheme.bodyText1),
+                onPressed: () {
+                  Get.offNamed('/Signup');
+                },
+              ),
+              const SizedBox(height: 20),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  TranslateHelper.continueWithoutLogin,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

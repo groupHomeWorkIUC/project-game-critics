@@ -6,7 +6,7 @@ import 'package:project_game_critics/services/translation_service.dart';
 
 void main() {
   runApp(GetMaterialApp(
-    initialRoute: "/Splash",
+    initialRoute: "/Home",
     getPages: RouteManagement.routeList,
     debugShowCheckedModeBanner: false,
     locale: LocalizationService.locale,

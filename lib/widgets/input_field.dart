@@ -22,15 +22,16 @@ class _CustomInputFieldState extends State<CustomInputField> {
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextField(
-        style: TextStyle(color: DarkThemeColors.greyTextColor),
+        style: TextStyle(
+            color: DarkThemeColors.greyTextColor, fontWeight: FontWeight.w300),
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: widget.inputFieldText,
           icon: Icon(
-                widget.inputFieldIcon,
-                color: DarkThemeColors.greyTextColor,
-                size: 20.0,
-              ),
+            widget.inputFieldIcon,
+            color: DarkThemeColors.greyTextColor,
+            size: 20.0,
+          ),
         ),
       ),
     );

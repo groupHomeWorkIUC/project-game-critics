@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
           onPressed: () {
             Get.offNamed('/Login');
           },
-          text: 'Go to login page',
+          text: 'Go to sign up page',
         ),
       ),
     );
