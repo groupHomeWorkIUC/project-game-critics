@@ -10,5 +10,6 @@ const Map<String, String> enUS = {
   'searchForGames': "Search for games",
   'more': "More",
   'news': "News",
-  'organizations': "Organizations",
+  'companies': "Companies",
+  'popularGames': "Popular Games",
 };

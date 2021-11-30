@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
-import 'package:project_game_critics/models/home_news.dart';
+import 'package:project_game_critics/models/news.dart';
 
 class HomeNewsListView extends StatefulWidget {
-  const HomeNewsListView({Key? key}) : super(key: key);
+  final List<News> homeNews;
+  const HomeNewsListView({Key? key, required this.homeNews}) : super(key: key);
 
   @override
   _HomeNewsListViewState createState() => _HomeNewsListViewState();
@@ -13,14 +14,9 @@ class HomeNewsListView extends StatefulWidget {
 class _HomeNewsListViewState extends State<HomeNewsListView> {
   @override
   Widget build(BuildContext context) {
-    HomeNews homeNews = HomeNews(
-        imageUrl:
-            'https://img.donanimhaber.com/images/haber/141280/src/forza-horizon-5-daha-cikmadan-muthis-bir-basari-yakaladi141280_0.jpg',
-        title: 'Deneme',
-        content: 'Deneme');
     // ignore: sized_box_for_whitespace
     return Container(
-      height: 250,
+      height: 260,
       child: ListView.separated(
           separatorBuilder: (BuildContext context, int index) {
             return const SizedBox(
@@ -28,14 +24,14 @@ class _HomeNewsListViewState extends State<HomeNewsListView> {
             );
           },
           scrollDirection: Axis.horizontal,
-          itemCount: 5,
+          itemCount: widget.homeNews.length,
           itemBuilder: (context, index) {
-            return buildNewsContainer(news: homeNews);
+            return buildNewsContainer(news: widget.homeNews.elementAt(index));
           }),
     );
   }
 
-  buildNewsContainer({HomeNews? news}) {
+  buildNewsContainer({News? news}) {
     return Container(
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
@@ -52,13 +48,15 @@ class _HomeNewsListViewState extends State<HomeNewsListView> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(news!.imageUrl!),
+                image: NetworkImage(news!.images!.first.link!),
               ),
             ),
           ),
           const SizedBox(height: 10),
           Text(
             news.title!,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.caption,
           ),
           // ignore: sized_box_for_whitespace

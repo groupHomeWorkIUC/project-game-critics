@@ -12,5 +12,6 @@ class TranslateHelper {
   static String searchForGames = 'searchForGames'.tr;
   static String more = 'more'.tr;
   static String news = 'news'.tr;
-  static String organizations = 'organizations'.tr;
+  static String companies = 'companies'.tr;
+  static String popularGames = 'popularGames'.tr;
 }
