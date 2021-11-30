@@ -41,6 +41,11 @@ final darkTheme = ThemeData(
         fontSize: 13,
         fontWeight: FontWeight.w400,
       ),
+      overline: TextStyle(
+        color: DarkThemeColors.whiteTextColor,
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
