@@ -17,17 +17,9 @@ class HomeTab1 extends StatefulWidget {
 }
 
 class _HomeTab1State extends State<HomeTab1> {
-  HomePageController controller = Get.find();
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomePageController>(builder: (_) {
+    return GetBuilder<HomePageController>(builder: (controller) {
       return SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.only(left: 20, right: 20, top: 25),
