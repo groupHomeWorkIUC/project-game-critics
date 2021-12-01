@@ -44,4 +44,18 @@ Fatih Yılmaz | Proje Yöneticisi
 
 
 
+# Hafta 2 Yapılan Sayfalar #
+# Uygulama içi sayfalar
+![image](https://user-images.githubusercontent.com/55146018/144283677-88effaea-bdd2-480d-a5d5-9b6afd7337e8.png)
+![image](https://user-images.githubusercontent.com/55146018/144283691-1f738572-cdfe-4ab4-b4e8-39332b287608.png)
+![image](https://user-images.githubusercontent.com/55146018/144283715-af2e2d80-f3a0-4319-b6e6-a5655f5644ce.png)
+![image](https://user-images.githubusercontent.com/55146018/144283741-88845ef5-f771-4fdd-9bac-36aa2e8a301c.png)
+
+# Haber ve Oyun Ekleme Sayfaları
+![image](https://user-images.githubusercontent.com/55146018/144284380-8c4b207d-e59c-4123-9c33-e964f7eb48ae.png)
+![image](https://user-images.githubusercontent.com/55146018/144284411-b6414a7c-504b-49e0-a755-fe1d826b419d.png)
+
+
+
+
 
