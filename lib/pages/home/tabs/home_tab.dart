@@ -9,20 +9,21 @@ import 'package:project_game_critics/widgets/home_news_listview.dart';
 import 'package:project_game_critics/widgets/input_field.dart';
 import 'package:project_game_critics/widgets/title_and_more_text.dart';
 
-class HomeTab1 extends StatefulWidget {
-  const HomeTab1({Key? key}) : super(key: key);
+class HomeTab extends StatefulWidget {
+  const HomeTab({Key? key}) : super(key: key);
 
   @override
-  _HomeTab1State createState() => _HomeTab1State();
+  _HomeTabState createState() => _HomeTabState();
 }
 
-class _HomeTab1State extends State<HomeTab1> {
+class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomePageController>(builder: (controller) {
       return SingleChildScrollView(
         child: Container(
-          margin: const EdgeInsets.only(left: 20, right: 20, top: 25),
+          margin:
+              const EdgeInsets.only(left: 10, right: 10, top: 25, bottom: 100),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -69,9 +70,6 @@ class _HomeTab1State extends State<HomeTab1> {
                           'https://cdn.vox-cdn.com/thumbor/V1qL4srH5jU6d2wLjtUtOrXSfQc=/0x0:3840x2160/1200x800/filters:focal(1574x364:2188x978)/cdn.vox-cdn.com/uploads/chorus_image/image/67762022/EmZ365SW8AEkLm0.0.jpeg')
                 ])
               ]),
-              const SizedBox(
-                height: 100,
-              ),
             ],
           ),
         ),
