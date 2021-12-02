@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 
 class CustomInputField extends StatefulWidget {
   final String? inputFieldText;
   final IconData inputFieldIcon;
+  final TextEditingController? controller;
   const CustomInputField(
-      {Key? key, required this.inputFieldText, required this.inputFieldIcon})
+      {Key? key,
+      required this.inputFieldText,
+      required this.inputFieldIcon,
+      this.controller})
       : super(key: key);
 
   @override
@@ -21,7 +26,15 @@ class _CustomInputFieldState extends State<CustomInputField> {
         color: DarkThemeColors.secondaryBackgroundColor,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: TextField(
+      child: TextFormField(
+        controller: widget.controller,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            Get.snackbar("Empty fields", "Please fill all input fields");
+            return null;
+          }
+          return null;
+        },
         style: TextStyle(
             color: DarkThemeColors.greyTextColor, fontWeight: FontWeight.w300),
         decoration: InputDecoration(

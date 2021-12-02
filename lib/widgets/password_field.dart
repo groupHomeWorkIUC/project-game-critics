@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 
 class PasswordField extends StatefulWidget {
-  const PasswordField({Key? key}) : super(key: key);
+  final TextEditingController? controller;
+  const PasswordField({Key? key, this.controller}) : super(key: key);
 
   @override
   _PasswordFieldState createState() => _PasswordFieldState();
@@ -18,11 +20,20 @@ class _PasswordFieldState extends State<PasswordField> {
         color: DarkThemeColors.secondaryBackgroundColor,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: TextField(
+      child: TextFormField(
+        controller: widget.controller,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            Get.snackbar("Empty password fields", "Please type your password");
+            return null;
+          }
+          return null;
+        },
         obscureText: true,
         enableSuggestions: false,
         autocorrect: false,
-        style: TextStyle(color: DarkThemeColors.greyTextColor),
+        style: TextStyle(
+            color: DarkThemeColors.greyTextColor, fontWeight: FontWeight.w300),
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: TranslateHelper.password,

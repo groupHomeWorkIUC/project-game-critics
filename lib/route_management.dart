@@ -6,26 +6,27 @@ import 'package:project_game_critics/pages/login_page.dart';
 import 'package:project_game_critics/pages/sign_up_page.dart';
 import 'package:project_game_critics/pages/splash_screen.dart';
 
+import 'constants/route_constants.dart';
+
 class RouteManagement {
-  static const initialRoute = '/Home';
+  static const initialRoute = RouteConstants.splash;
   static final List<GetPage> routeList = [
     GetPage(
-      name: '/Splash',
+      name: RouteConstants.splash,
       page: () => const SplashScreen(),
+      binding: InitialBinding(),
     ),
     GetPage(
-      name: '/Login',
-      page: () => const LoginPage(),
-      binding: UserBindings(),
+      name: RouteConstants.login,
+      page: () => LoginPage(),
     ),
     GetPage(
-      name: '/Signup',
+      name: RouteConstants.signUp,
       page: () => const SignUpPage(),
     ),
     GetPage(
-      name: '/Home',
-      page: () => HomePage(),
-      binding: InitialBinding(),
+      name: RouteConstants.home,
+      page: () => const HomePage(),
     ),
   ];
 }

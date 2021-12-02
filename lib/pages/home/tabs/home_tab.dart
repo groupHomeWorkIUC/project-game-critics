@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_game_critics/controllers/home_page_controller.dart';
+import 'package:project_game_critics/controllers/global_controller/home_page_controller.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/models/company.dart';
 import 'package:project_game_critics/models/game.dart';
