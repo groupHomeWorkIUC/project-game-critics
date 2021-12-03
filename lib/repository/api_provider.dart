@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/api_constants.dart';
+import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
 
 abstract class ApiProvider {
   static final GetConnect _getConnect = GetConnect();
@@ -10,7 +11,9 @@ abstract class ApiProvider {
       Map<String, String>? headers,
       String? contentType}) async {
     Response response = await _getConnect.get(url,
-        query: query, headers: headers, contentType: contentType);
+        query: query,
+        headers: {'Authorization': 'Bearer ' + UserController.accessToken!},
+        contentType: contentType);
     return response;
   }
 

@@ -5,10 +5,12 @@ import 'package:project_game_critics/repository/api_provider.dart';
 
 class UserController extends GetxController {
   User? user;
+  static String? accessToken;
   Future login({String? email, String? password}) async {
     String url = ApiConstants.login;
     Response response = await ApiProvider.postResponse(
-        url, {'email': email, 'password': password});
+        url, {'email': 'yazilimci65@gmail.com', 'password': '123456'});
+    accessToken = response.body['access_token'];
     return response;
   }
 

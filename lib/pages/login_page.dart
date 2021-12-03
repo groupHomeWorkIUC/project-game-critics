@@ -44,6 +44,7 @@ class LoginPage extends GetView<UserController> {
                       Response response = await controller.login(
                           email: emailController.value.text,
                           password: emailController.value.text);
+                      print(response.body);
                       if (response.statusCode == 200) {
                         Get.offAllNamed(RouteConstants.home);
                       } else {

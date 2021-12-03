@@ -82,13 +82,22 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
     return AppBar(
       elevation: 0,
       leading: IconButton(
+          splashRadius: 20,
           onPressed: () {
             Get.back();
           },
           icon: const Icon(Icons.arrow_back)),
       actions: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.bookmark)),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.share),
+          splashRadius: 20,
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.bookmark),
+          splashRadius: 20,
+        ),
       ],
     );
   }

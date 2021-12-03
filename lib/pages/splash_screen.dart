@@ -13,7 +13,7 @@ class SplashScreen extends StatelessWidget {
       child: Center(
         child: PrimaryButton(
           onPressed: () {
-            Get.offNamed(RouteConstants.home);
+            Get.offNamed(RouteConstants.login);
           },
           text: 'Go to Home page',
         ),
