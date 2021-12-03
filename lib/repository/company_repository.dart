@@ -4,7 +4,7 @@ import 'package:project_game_critics/models/company.dart';
 import 'package:project_game_critics/repository/api_provider.dart';
 
 class CompanyRepository {
-  Future getCompanies() async {
+  static Future getCompanies() async {
     Response response = await ApiProvider.getResponse(ApiConstants.companies);
     List<Company> companiesList = [];
     for (var item in response.body) {

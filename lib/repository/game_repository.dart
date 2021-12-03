@@ -4,7 +4,7 @@ import 'package:project_game_critics/models/game.dart';
 import 'package:project_game_critics/repository/api_provider.dart';
 
 class GameRepository extends ApiProvider {
-  Future getGames() async {
+  static Future getGames() async {
     Response response = await ApiProvider.getResponse(ApiConstants.games);
     List<Game> gameList = [];
     for (var item in response.body) {
