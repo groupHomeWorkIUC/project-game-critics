@@ -9,11 +9,6 @@ import 'package:project_game_critics/widgets/password_field.dart';
 
 class LoginPage extends GetView<UserController> {
   LoginPage({Key? key}) : super(key: key);
-
-  final _formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -25,40 +20,34 @@ class LoginPage extends GetView<UserController> {
         body: Container(
           margin: const EdgeInsets.only(right: 20, left: 20),
           child: Form(
-            key: _formKey,
+            key: controller.loginFormKey,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomInputField(
+                  controller: controller.loginEmailController,
                   inputFieldText: TranslateHelper.email,
                   inputFieldIcon: Icons.email,
                 ),
                 const SizedBox(height: 10),
-                const PasswordField(),
+                PasswordField(controller: controller.loginPasswordController),
                 const SizedBox(height: 20),
                 PrimaryButton(
                   text: TranslateHelper.login,
                   onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      Response response = await controller.login(
-                          email: emailController.value.text,
-                          password: emailController.value.text);
-                      print(response.body);
-                      if (response.statusCode == 200) {
-                        Get.offAllNamed(RouteConstants.home);
-                      } else {
-                        Get.snackbar(
-                            "Failed to login", "Wrong email or passwor!");
-                      }
-                    }
+                    controller.login(
+                        email: controller.emailController.value.text,
+                        password: controller.passwordController.value.text);
                   },
                 ),
                 const SizedBox(height: 20),
                 TextButton(
                   child: Text(TranslateHelper.dontHaveAnAccountSignUp,
                       style: Theme.of(context).textTheme.bodyText1),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(RouteConstants.signUp);
+                  },
                 ),
                 const SizedBox(height: 20),
                 TextButton(

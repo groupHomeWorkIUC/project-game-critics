@@ -16,12 +16,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final _formKey = GlobalKey<FormState>();
   UserController userController = Get.find();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController passwordAgainController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +24,7 @@ class _SignUpPageState extends State<SignUpPage> {
       body: Container(
         margin: const EdgeInsets.only(right: 20, left: 20),
         child: Form(
-          key: _formKey,
+          key: userController.signUpFormKey,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -37,42 +32,27 @@ class _SignUpPageState extends State<SignUpPage> {
               CustomInputField(
                 inputFieldText: TranslateHelper.email,
                 inputFieldIcon: Icons.email,
-                controller: emailController,
+                controller: userController.emailController,
               ),
               const SizedBox(height: 10),
               CustomInputField(
                 inputFieldText: TranslateHelper.name,
                 inputFieldIcon: Icons.person,
-                controller: nameController,
+                controller: userController.nameController,
               ),
               const SizedBox(height: 10),
               PasswordField(
-                controller: passwordController,
+                controller: userController.passwordController,
               ),
               const SizedBox(height: 10),
               PasswordField(
-                controller: passwordAgainController,
+                controller: userController.passwordAgainController,
               ),
               const SizedBox(height: 20),
               PrimaryButton(
                 text: TranslateHelper.signUp,
                 onPressed: () async {
-                  if (_formKey.currentState!.validate() &&
-                      passwordAgainController.value.text ==
-                          passwordController.value.text) {
-                    Response response = await userController.signUp(
-                        email: emailController.value.text,
-                        name: nameController.value.text,
-                        password: passwordController.value.text);
-                    if (response.statusCode == 200) {
-                      Get.offAllNamed(RouteConstants.home);
-                    } else {
-                      Get.snackbar(
-                          "Error", "Couldn't sign up, please try again");
-                    }
-                  } else {
-                    Get.snackbar("Error", "Please check your password");
-                  }
+                  userController.signUp();
                 },
               ),
               const SizedBox(height: 20),

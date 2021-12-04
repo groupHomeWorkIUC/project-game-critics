@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:project_game_critics/controllers/global_controller/home_page_controller.dart';
 import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
 
 class InitialBinding implements Bindings {

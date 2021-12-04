@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
+import 'package:project_game_critics/constants/constants.dart';
 import 'package:project_game_critics/controllers/global_controller/home_page_controller.dart';
 import 'package:project_game_critics/controllers/screen_controller/news_details_controller.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
@@ -36,6 +37,14 @@ class _HomeNewsListViewState extends State<HomeNewsListView> {
   }
 
   buildNewsContainer({News? news}) {
+    String imageUrl;
+
+    if (news != null && news.images!.isNotEmpty) {
+      imageUrl = news.images!.first.link!;
+    } else {
+      imageUrl = Constants.blankImage;
+    }
+
     return InkWell(
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
@@ -60,13 +69,13 @@ class _HomeNewsListViewState extends State<HomeNewsListView> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(news!.images!.first.link!),
+                  image: NetworkImage(imageUrl),
                 ),
               ),
             ),
             const SizedBox(height: 10),
             Text(
-              news.title!,
+              news!.title!,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.caption,

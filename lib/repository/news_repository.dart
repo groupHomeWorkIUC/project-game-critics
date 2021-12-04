@@ -7,7 +7,8 @@ import 'package:project_game_critics/repository/api_provider.dart';
 class NewsRepository extends ApiProvider {
   static Future getHomeNews() async {
     Response response = await ApiProvider.getResponse(ApiConstants.news,
-        query: {'limit': "10"});
+        query: {'limit': "10"},
+        headers: {'Authorization': 'Bearer ' + UserController.accessToken!});
     List<News> newsList = [];
     for (var item in response.body) {
       newsList.add(News.fromJson(item));

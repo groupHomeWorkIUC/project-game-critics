@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:project_game_critics/constants/constants.dart';
 import 'package:project_game_critics/controllers/screen_controller/news_details_controller.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 
@@ -35,7 +36,9 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
                           style: Theme.of(context).textTheme.headline3,
                         ),
                         const SizedBox(height: 20),
-                        Image.network(controller.news!.images!.first.link!),
+                        Image.network(controller.news!.images!.isEmpty
+                            ? Constants.blankImage
+                            : controller.news!.images!.first.link!),
                         const SizedBox(height: 20),
                         Text(
                           controller.news!.content!,
