@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/api_constants.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
+import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/models/user.dart';
 import 'package:project_game_critics/repository/api_provider.dart';
 import 'package:project_game_critics/repository/user_repository.dart';
@@ -11,6 +12,7 @@ class UserController extends GetxController {
   final loginFormKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordAgainController = TextEditingController();
 
@@ -40,13 +42,16 @@ class UserController extends GetxController {
     if (signUpFormKey.currentState!.validate() &&
         passwordAgainController.value.text == passwordController.value.text) {
       Response response = await UserRepository.signUp(
-          email: emailController.value.text,
-          name: nameController.value.text,
-          password: passwordController.value.text);
+        email: emailController.value.text,
+        name: nameController.value.text,
+        userName: userNameController.value.text,
+        password: passwordController.value.text,
+      );
+
       if (response.statusCode == 200) {
         Get.offAllNamed(RouteConstants.home);
       } else {
-        Get.snackbar("Error", "Couldn't sign up, please try again");
+        Get.snackbar("Error", TranslateHelper.couldntSignUpPleaseTryAgain);
       }
     } else {
       Get.snackbar("Error", "Please check your password");

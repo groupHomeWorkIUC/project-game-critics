@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_game_critics/constants/route_constants.dart';
 import 'package:project_game_critics/controllers/global_controller/home_page_controller.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/models/company.dart';
@@ -84,12 +85,20 @@ class _HomeTabState extends State<HomeTab> {
         itemCount: company.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.network(
-              company.elementAt(index).imageLink!,
-              width: 150,
-              fit: BoxFit.cover,
+          return InkWell(
+            onTap: () {
+              Get.toNamed(RouteConstants.gamesPage,
+                  arguments: {'company_id': company.elementAt(index).id});
+            },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                company.elementAt(index).imageLink!,
+                width: 150,
+                fit: BoxFit.cover,
+              ),
             ),
           );
         },

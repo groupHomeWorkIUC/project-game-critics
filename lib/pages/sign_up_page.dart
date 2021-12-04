@@ -41,6 +41,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 controller: userController.nameController,
               ),
               const SizedBox(height: 10),
+              CustomInputField(
+                inputFieldText: TranslateHelper.userName,
+                inputFieldIcon: Icons.supervised_user_circle,
+                controller: userController.userNameController,
+              ),
+              const SizedBox(height: 10),
               PasswordField(
                 controller: userController.passwordController,
               ),

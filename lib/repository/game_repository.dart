@@ -12,4 +12,16 @@ class GameRepository extends ApiProvider {
     }
     return gameList;
   }
+
+  static Future getFilteredGames(int? id) async {
+    Response response = await ApiProvider.getResponse(
+      ApiConstants.games,
+      query: {'company_id': id.toString()},
+    );
+    List<Game> gameList = [];
+    for (var item in response.body) {
+      gameList.add(Game.fromJson(item));
+    }
+    return gameList;
+  }
 }

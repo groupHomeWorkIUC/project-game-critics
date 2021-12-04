@@ -20,7 +20,7 @@ class UserRepository extends ApiProvider {
     String url = ApiConstants.register;
     Response response = await ApiProvider.postResponse(url, {
       'email': email,
-      'username': 'userName',
+      'username': userName,
       'name': name,
       'password': password
     });

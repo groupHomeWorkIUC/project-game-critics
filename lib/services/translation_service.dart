@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_game_critics/languages/english.dart';
+import 'package:project_game_critics/helpers/languages/english.dart';
 
 class LocalizationService extends Translations {
   // Default locale
