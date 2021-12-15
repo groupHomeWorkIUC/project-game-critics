@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/models/news.dart';
 
-class NewsContainer extends GetView {
+class NewsContainer extends StatelessWidget {
   final News? news;
   const NewsContainer({Key? key, this.news}) : super(key: key);
 

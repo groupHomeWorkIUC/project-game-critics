@@ -3,15 +3,11 @@ import 'package:get/get.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 
-class PasswordField extends StatefulWidget {
-  final TextEditingController? controller;
-  const PasswordField({Key? key, this.controller}) : super(key: key);
-
-  @override
-  _PasswordFieldState createState() => _PasswordFieldState();
-}
-
-class _PasswordFieldState extends State<PasswordField> {
+class PasswordField extends GetView {
+  final TextEditingController? textEditingController;
+  final String? initialValue;
+  const PasswordField({Key? key, this.textEditingController, this.initialValue})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +17,7 @@ class _PasswordFieldState extends State<PasswordField> {
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextFormField(
-        controller: widget.controller,
+        controller: textEditingController,
         validator: (value) {
           if (value == null || value.isEmpty) {
             Get.snackbar("Empty password fields", "Please type your password");

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_game_critics/constants/api_constants.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
+import 'package:project_game_critics/helpers/storage.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/models/user.dart';
-import 'package:project_game_critics/repository/api_provider.dart';
 import 'package:project_game_critics/repository/user_repository.dart';
 
 class UserController extends GetxController {
   final signUpFormKey = GlobalKey<FormState>();
   final loginFormKey = GlobalKey<FormState>();
+
+  //Signup Controllers
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
@@ -24,15 +25,22 @@ class UserController extends GetxController {
   static User? user;
   static String? accessToken;
 
+  @override
+  void onInit() {
+    super.onInit();
+    loginEmailController.text = Storage.getEmail ?? '';
+  }
+
   Future login({String? email, String? password}) async {
     if (loginFormKey.currentState!.validate()) {
       Response response = await UserRepository.login(
           email: loginEmailController.value.text,
           password: loginPasswordController.value.text);
       if (response.statusCode == 200) {
+        Storage.setEmail(loginEmailController.value.text);
         Get.offAllNamed(RouteConstants.home);
       } else {
-        Get.snackbar("Failed to login", "Wrong email or passwor!");
+        Get.snackbar("Failed to login", "Wrong email or password!");
       }
     }
     return UserRepository.login(email: email, password: password);

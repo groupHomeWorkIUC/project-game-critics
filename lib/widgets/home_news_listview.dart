@@ -3,19 +3,13 @@ import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/constants.dart';
 import 'package:project_game_critics/controllers/global_controller/home_page_controller.dart';
-import 'package:project_game_critics/controllers/screen_controller/news_details_controller.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/models/news.dart';
 
-class HomeNewsListView extends StatefulWidget {
+class HomeNewsListView extends GetView {
   final List<News> homeNews;
-  const HomeNewsListView({Key? key, required this.homeNews}) : super(key: key);
+  HomeNewsListView({Key? key, required this.homeNews}) : super(key: key);
 
-  @override
-  _HomeNewsListViewState createState() => _HomeNewsListViewState();
-}
-
-class _HomeNewsListViewState extends State<HomeNewsListView> {
   HomePageController homePageController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -29,9 +23,9 @@ class _HomeNewsListViewState extends State<HomeNewsListView> {
             );
           },
           scrollDirection: Axis.horizontal,
-          itemCount: widget.homeNews.length,
+          itemCount: homeNews.length,
           itemBuilder: (context, index) {
-            return buildNewsContainer(news: widget.homeNews.elementAt(index));
+            return buildNewsContainer(news: homeNews.elementAt(index));
           }),
     );
   }
@@ -64,7 +58,7 @@ class _HomeNewsListViewState extends State<HomeNewsListView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(Get.context!).size.width,
               height: 130,
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -78,16 +72,16 @@ class _HomeNewsListViewState extends State<HomeNewsListView> {
               news!.title!,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(Get.context!).textTheme.caption,
             ),
             // ignore: sized_box_for_whitespace
             Container(
-              width: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(Get.context!).size.width,
               child: Text(
                 news.content!,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
-                style: Theme.of(context).textTheme.bodyText2,
+                style: Theme.of(Get.context!).textTheme.bodyText2,
               ),
             ),
           ],

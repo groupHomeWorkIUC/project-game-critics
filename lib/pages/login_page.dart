@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
 import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
+import 'package:project_game_critics/helpers/storage.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/widgets/custom_primary_button.dart';
 import 'package:project_game_critics/widgets/input_field.dart';
@@ -29,14 +30,17 @@ class LoginPage extends GetView<UserController> {
                   controller: controller.loginEmailController,
                   inputFieldText: TranslateHelper.email,
                   inputFieldIcon: Icons.email,
+                  initialValue: Storage.getEmail ?? '',
                 ),
                 const SizedBox(height: 10),
-                PasswordField(controller: controller.loginPasswordController),
+                PasswordField(
+                  textEditingController: controller.loginPasswordController,
+                ),
                 const SizedBox(height: 20),
                 PrimaryButton(
                   text: TranslateHelper.login,
                   onPressed: () async {
-                    controller.login(
+                    await controller.login(
                         email: controller.emailController.value.text,
                         password: controller.passwordController.value.text);
                   },

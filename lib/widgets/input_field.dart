@@ -6,8 +6,10 @@ class CustomInputField extends StatefulWidget {
   final String? inputFieldText;
   final IconData inputFieldIcon;
   final TextEditingController? controller;
+  final String? initialValue;
   const CustomInputField(
       {Key? key,
+      this.initialValue,
       required this.inputFieldText,
       required this.inputFieldIcon,
       this.controller})

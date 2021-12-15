@@ -4,16 +4,11 @@ import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/models/game.dart';
 import 'package:project_game_critics/widgets/review_container.dart';
 
-class GamesContainer extends StatefulWidget {
+class GamesContainer extends StatelessWidget {
   final Game? game;
   final bool? isAlone;
   const GamesContainer({Key? key, this.game, this.isAlone}) : super(key: key);
 
-  @override
-  _GamesContainerState createState() => _GamesContainerState();
-}
-
-class _GamesContainerState extends State<GamesContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +23,7 @@ class _GamesContainerState extends State<GamesContainer> {
           Expanded(
             flex: 5,
             child: Image.network(
-              widget.game!.images!.first.link ?? Constants.blankImage,
+              game!.images!.first.link ?? Constants.blankImage,
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width,
             ),
@@ -38,11 +33,13 @@ class _GamesContainerState extends State<GamesContainer> {
             flex: 1,
             child: Row(
               children: [
-                Text(
-                  widget.game!.name!,
-                  style: Theme.of(context).textTheme.subtitle1,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                Expanded(
+                  child: Text(
+                    game!.name!,
+                    style: Theme.of(context).textTheme.subtitle1,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
                 const SizedBox(width: 10),
                 const ReviewContainer(
@@ -54,7 +51,7 @@ class _GamesContainerState extends State<GamesContainer> {
           Expanded(
             flex: 2,
             child: Text(
-              widget.game!.content!,
+              game!.content!,
               overflow: TextOverflow.ellipsis,
               maxLines: 3,
               style: Theme.of(context).textTheme.subtitle2,

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_game_critics/constants/route_constants.dart';
-import 'package:project_game_critics/widgets/custom_primary_button.dart';
+import 'package:project_game_critics/controllers/screen_controller/splash_screen_controller.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends GetView<SplashScreenController> {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
@@ -11,12 +10,7 @@ class SplashScreen extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Center(
-        child: PrimaryButton(
-          onPressed: () {
-            Get.offNamed(RouteConstants.login);
-          },
-          text: 'Go to Home page',
-        ),
+        child: Container(),
       ),
     );
   }

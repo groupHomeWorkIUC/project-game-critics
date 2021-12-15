@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CustomBottomNavBar extends StatefulWidget {
+class CustomBottomNavBar extends StatelessWidget {
   final List<Widget> iconButtons;
   const CustomBottomNavBar({Key? key, required this.iconButtons})
       : super(key: key);
-
-  @override
-  _CustomBottomNavBarState createState() => _CustomBottomNavBarState();
-}
-
-class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +16,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: widget.iconButtons,
+        children: iconButtons,
       ),
     );
   }

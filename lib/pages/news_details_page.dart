@@ -36,9 +36,12 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
                           style: Theme.of(context).textTheme.headline3,
                         ),
                         const SizedBox(height: 20),
-                        Image.network(controller.news!.images!.isEmpty
-                            ? Constants.blankImage
-                            : controller.news!.images!.first.link!),
+                        Hero(
+                          tag: 'news' + controller.news!.id.toString(),
+                          child: Image.network(controller.news!.images!.isEmpty
+                              ? Constants.blankImage
+                              : controller.news!.images!.first.link!),
+                        ),
                         const SizedBox(height: 20),
                         Text(
                           controller.news!.content!,
