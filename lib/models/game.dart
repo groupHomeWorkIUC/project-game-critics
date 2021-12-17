@@ -1,4 +1,5 @@
 import 'package:project_game_critics/models/image.dart';
+import 'package:project_game_critics/models/store.dart';
 
 class Game {
   int? id;
@@ -10,6 +11,7 @@ class Game {
   String? releaseDate;
   String? createdAt;
   String? updatedAt;
+  List<Store>? stores;
   List<ImageModel>? images;
 
   Game(
@@ -22,7 +24,8 @@ class Game {
       this.releaseDate,
       this.createdAt,
       this.updatedAt,
-      this.images});
+      this.images,
+      this.stores});
 
   Game.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -40,6 +43,12 @@ class Game {
         images!.add(ImageModel.fromJson(v));
       });
     }
+    if (json['stores'] != null) {
+      stores = [];
+      json['stores'].forEach((v) {
+        stores!.add(Store.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -55,6 +64,9 @@ class Game {
     data['updated_at'] = updatedAt;
     if (images != null) {
       data['images'] = images!.map((v) => v.toJson()).toList();
+    }
+    if (stores != null) {
+      data['stores'] = stores!.map((v) => v.toJson()).toList();
     }
     return data;
   }

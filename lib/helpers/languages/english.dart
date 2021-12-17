@@ -14,4 +14,5 @@ const Map<String, String> enUS = {
   'popularGames': "Popular Games",
   'couldntSignUpPleaseTryAgain': "Couldn't sign up, please try again",
   'userName': "User Name",
+  'sendYourReview': "Send Your Review",
 };

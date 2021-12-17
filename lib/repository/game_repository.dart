@@ -24,4 +24,11 @@ class GameRepository extends ApiProvider {
     }
     return gameList;
   }
+
+  static Future getGameDetails(String id) async {
+    Response response =
+        await ApiProvider.getResponse(ApiConstants.games + "/" + id.toString());
+    Game game = Game.fromJson(response.body);
+    return game;
+  }
 }

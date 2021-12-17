@@ -4,13 +4,16 @@ import 'package:project_game_critics/models/game.dart';
 import 'package:project_game_critics/repository/game_repository.dart';
 
 class GameDetailsController extends GetxController {
-  Game? game;
+  Game? game = Game();
   final data = Get.arguments;
+  bool isLoading = true;
+
   @override
   void onInit() async {
     super.onInit();
-    String id = "1";
-    game = await GameRepository.getGameDetails(id);
+
+    game = await GameRepository.getGameDetails(data['gameId'].toString());
+    isLoading = false;
     update();
   }
 }

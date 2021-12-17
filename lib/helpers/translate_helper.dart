@@ -17,4 +17,5 @@ class TranslateHelper {
   static String popularGames = 'popularGames'.tr;
   static String couldntSignUpPleaseTryAgain =
       'couldntSignUpPleaseTryAgain'.tr; //Couldn't sign up, please try again
+  static String sendYourReview = 'sendYourReview'.tr;
 }
