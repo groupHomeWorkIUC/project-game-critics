@@ -7,14 +7,15 @@ class User {
   String? createdAt;
   String? updatedAt;
 
-  User(
-      {this.id,
-      this.name,
-      this.username,
-      this.email,
-      this.password,
-      this.createdAt,
-      this.updatedAt});
+  User();
+
+  void setEmail(String? _email) {
+    email = _email;
+  }
+
+  void setPassword(String? _password) {
+    password = _password;
+  }
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -27,14 +28,30 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['username'] = this.username;
-    data['email'] = this.email;
-    data['password'] = this.password;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['username'] = username;
+    data['email'] = email;
+    data['password'] = password;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    return data;
+  }
+
+  Map<String, dynamic> loginForm() {
+    var data = <String, dynamic>{};
+    data['email'] = email;
+    data['password'] = password;
+    return data;
+  }
+
+  Map<String, dynamic> registerForm() {
+    var data = <String, dynamic>{};
+    data['email'] = email;
+    data['name'] = name;
+    data['username'] = username;
+    data['password'] = password;
     return data;
   }
 }

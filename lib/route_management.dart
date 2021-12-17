@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:project_game_critics/bindings/initial_binding.dart';
 import 'package:project_game_critics/bindings/page_bindings/games_page_binding.dart';
+import 'package:project_game_critics/bindings/page_bindings/login_page_binding.dart';
 import 'package:project_game_critics/bindings/page_bindings/news_details_binding.dart';
 import 'package:project_game_critics/pages/games_page.dart';
 import 'package:project_game_critics/pages/home/home_page.dart';
@@ -23,6 +24,7 @@ class RouteManagement {
     GetPage(
       name: RouteConstants.login,
       page: () => LoginPage(),
+      binding: LoginPageBinding(),
     ),
     GetPage(
       name: RouteConstants.signUp,
@@ -30,7 +32,7 @@ class RouteManagement {
     ),
     GetPage(
       name: RouteConstants.home,
-      page: () => const HomePage(),
+      page: () => HomePage(),
       binding: HomePageBinding(),
     ),
     GetPage(

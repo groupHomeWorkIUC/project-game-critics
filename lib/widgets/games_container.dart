@@ -6,12 +6,12 @@ import 'package:project_game_critics/widgets/review_container.dart';
 
 class GamesContainer extends StatelessWidget {
   final Game? game;
-  final bool? isAlone;
-  const GamesContainer({Key? key, this.game, this.isAlone}) : super(key: key);
+  const GamesContainer({Key? key, this.game}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 300,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: DarkThemeColors.secondaryBackgroundColor,

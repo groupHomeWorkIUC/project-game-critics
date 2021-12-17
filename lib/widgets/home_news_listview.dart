@@ -48,7 +48,7 @@ class HomeNewsListView extends GetView {
         }
       },
       child: Container(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: DarkThemeColors.secondaryBackgroundColor,
           borderRadius: BorderRadius.circular(8),

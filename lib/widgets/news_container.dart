@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/models/news.dart';
 

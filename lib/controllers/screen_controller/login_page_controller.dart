@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:project_game_critics/constants/route_constants.dart';
+import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
+import 'package:project_game_critics/helpers/storage.dart';
+import 'package:project_game_critics/repository/user_repository.dart';
+
+class LoginPageController extends GetxController {
+  final loginFormKey = GlobalKey<FormState>();
+
+  //Login Controllers
+  TextEditingController loginEmailController = TextEditingController();
+  TextEditingController loginPasswordController = TextEditingController();
+
+  @override
+  void onInit() {
+    super.onInit();
+    loginEmailController.text = Storage.getEmail ?? '';
+  }
+
+  Future login() async {
+    Response? response;
+
+    UserController.user!.setEmail(loginEmailController.value.text);
+    UserController.user!.setPassword(loginPasswordController.value.text);
+
+    if (loginFormKey.currentState!.validate()) {
+      response = await UserRepository.login(user: UserController.user);
+      if (response!.statusCode == 200) {
+        Storage.setEmail(loginEmailController.value.text);
+        Get.offAllNamed(RouteConstants.home);
+      } else {
+        Get.snackbar("Failed to login", "Wrong email or password!");
+      }
+    }
+    return response;
+  }
+}

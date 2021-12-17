@@ -11,24 +11,24 @@ class GamesPage extends GetView<GamesController> {
     return Scaffold(
       appBar: buildAppBar(),
       body: GetBuilder<GamesController>(builder: (_) {
-        return GridView.count(
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 100),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            crossAxisCount: 1,
-            childAspectRatio: 1.3,
-            children: List.generate(controller.games.length, (index) {
-              return GamesContainer(
-                game: controller.games.elementAt(index),
-                isAlone: controller.games.length < 2,
-              );
-            }));
+        return Container(
+          margin: const EdgeInsets.symmetric(horizontal: 10),
+          child: ListView.separated(
+              itemCount: controller.games.length,
+              separatorBuilder: (context, index) => const SizedBox(height: 10),
+              itemBuilder: (context, index) {
+                return GamesContainer(
+                  game: controller.games.elementAt(index),
+                );
+              }),
+        );
       }),
     );
   }
 
   buildAppBar() {
     return AppBar(
+      title: Center(child: Text(controller.title!.toUpperCase())),
       elevation: 0,
       actions: [
         IconButton(

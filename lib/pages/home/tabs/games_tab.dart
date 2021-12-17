@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:project_game_critics/controllers/global_controller/home_page_controller.dart';
+import 'package:project_game_critics/controllers/screen_controller/tab_controllers/games_tab_controller.dart';
 import 'package:project_game_critics/widgets/games_container.dart';
 
-class GamesTab extends StatefulWidget {
+class GamesTab extends GetView<GamesTabController> {
   const GamesTab({Key? key}) : super(key: key);
 
   @override
-  _GamesTabState createState() => _GamesTabState();
-}
-
-class _GamesTabState extends State<GamesTab> {
-  @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomePageController>(builder: (controller) {
+    return GetBuilder<GamesTabController>(builder: (_) {
       return GridView.count(
           padding: const EdgeInsets.only(left: 10, right: 10, bottom: 100),
           crossAxisSpacing: 10,

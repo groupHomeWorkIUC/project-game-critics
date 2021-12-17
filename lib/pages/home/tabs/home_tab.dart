@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
 import 'package:project_game_critics/controllers/global_controller/home_page_controller.dart';
+import 'package:project_game_critics/controllers/screen_controller/tab_controllers/home_tab_controller.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/models/company.dart';
 import 'package:project_game_critics/models/game.dart';
@@ -10,17 +11,12 @@ import 'package:project_game_critics/widgets/home_news_listview.dart';
 import 'package:project_game_critics/widgets/input_field.dart';
 import 'package:project_game_critics/widgets/title_and_more_text.dart';
 
-class HomeTab extends StatefulWidget {
+class HomeTab extends GetView<HomeTabController> {
   const HomeTab({Key? key}) : super(key: key);
 
   @override
-  _HomeTabState createState() => _HomeTabState();
-}
-
-class _HomeTabState extends State<HomeTab> {
-  @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomePageController>(builder: (controller) {
+    return GetBuilder<HomeTabController>(builder: (_) {
       return SingleChildScrollView(
         child: Container(
           margin:
@@ -87,8 +83,10 @@ class _HomeTabState extends State<HomeTab> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              Get.toNamed(RouteConstants.gamesPage,
-                  arguments: {'company_id': company.elementAt(index).id});
+              Get.toNamed(RouteConstants.gamesPage, arguments: {
+                'company_id': company.elementAt(index).id,
+                'company_name': company.elementAt(index).name
+              });
             },
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
