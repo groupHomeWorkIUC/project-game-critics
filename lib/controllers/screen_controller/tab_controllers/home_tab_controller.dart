@@ -9,12 +9,12 @@ class HomeTabController extends GetxController {
   List<News> homeNews = [];
   List<Company> companies = [];
 
-  @override
-  void onInit() async {
-    super.onInit();
-    homeNews = await NewsRepository.getHomeNews();
-    LogHelper.infoLog(homeNews.first.title);
-    companies = await CompanyRepository.getCompanies();
-    update();
+  Future getData() async {
+    if (homeNews.isEmpty || companies.isEmpty) {
+      homeNews = await NewsRepository.getHomeNews();
+      LogHelper.infoLog(homeNews.first.title);
+      companies = await CompanyRepository.getCompanies();
+    }
+    return companies;
   }
 }

@@ -6,14 +6,14 @@ import 'package:project_game_critics/repository/news_repository.dart';
 class NewsTabController extends GetxController {
   List<News> newsList = [];
 
-  @override
-  void onInit() async {
-    super.onInit();
-    newsList = await NewsRepository.getHomeNews();
-    update();
-  }
-
   void onClickNews({required News news}) {
     Get.toNamed(RouteConstants.newsDetailsPage, arguments: {'news': news});
+  }
+
+  Future getNews() async {
+    if (newsList.isEmpty) {
+      newsList = await NewsRepository.getHomeNews();
+    }
+    return newsList;
   }
 }
