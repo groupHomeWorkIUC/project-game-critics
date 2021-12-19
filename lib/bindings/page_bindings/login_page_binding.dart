@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:project_game_critics/controllers/screen_controller/login_page_controller.dart';
+import 'package:project_game_critics/controllers/screen_controller/auth/login_page_controller.dart';
 
 class LoginPageBinding implements Bindings {
   @override

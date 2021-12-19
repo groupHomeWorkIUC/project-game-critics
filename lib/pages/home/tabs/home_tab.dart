@@ -8,7 +8,7 @@ import 'package:project_game_critics/models/company.dart';
 import 'package:project_game_critics/models/game.dart';
 import 'package:project_game_critics/models/image.dart';
 import 'package:project_game_critics/widgets/home_news_listview.dart';
-import 'package:project_game_critics/widgets/input_field.dart';
+import 'package:project_game_critics/widgets/custom_input_fields/input_field.dart';
 import 'package:project_game_critics/widgets/title_and_more_text.dart';
 
 class HomeTab extends GetView<HomeTabController> {

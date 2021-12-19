@@ -6,10 +6,10 @@ import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/pages/home/tabs/home_tab.dart';
 import 'package:project_game_critics/pages/home/tabs/games_tab.dart';
 import 'package:project_game_critics/pages/home/tabs/news_tab.dart';
-import 'package:project_game_critics/widgets/custom_bottom_navbar/custom_bottom_navbar.dart';
+import 'package:project_game_critics/widgets/custom_bottom_navbar.dart';
 
 class HomePage extends GetView<HomePageController> {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +70,17 @@ class HomePage extends GetView<HomePageController> {
         Constants.appName,
         style: Theme.of(Get.context!).textTheme.headline4,
       ),
+      actions: [
+        InkWell(
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(Constants.blankImage),
+          ),
+          onTap: controller.goToProfilePage,
+        ),
+        const SizedBox(width: 20),
+      ],
     );
   }
 

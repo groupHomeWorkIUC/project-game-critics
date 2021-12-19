@@ -4,16 +4,19 @@ import 'package:project_game_critics/bindings/page_bindings/game_details_binding
 import 'package:project_game_critics/bindings/page_bindings/games_page_binding.dart';
 import 'package:project_game_critics/bindings/page_bindings/login_page_binding.dart';
 import 'package:project_game_critics/bindings/page_bindings/news_details_binding.dart';
-import 'package:project_game_critics/pages/game_detail_page.dart';
-import 'package:project_game_critics/pages/games_page.dart';
+import 'package:project_game_critics/bindings/page_bindings/profile_page_binding.dart';
+import 'package:project_game_critics/bindings/page_bindings/signup_page_binding.dart';
+import 'package:project_game_critics/pages/auth/profile_page.dart';
+import 'package:project_game_critics/pages/game/game_detail_page.dart';
+import 'package:project_game_critics/pages/game/games_page.dart';
 import 'package:project_game_critics/pages/home/home_page.dart';
-import 'package:project_game_critics/pages/login_page.dart';
-import 'package:project_game_critics/pages/sign_up_page.dart';
+import 'package:project_game_critics/pages/auth/login_page.dart';
+import 'package:project_game_critics/pages/auth/sign_up_page.dart';
 import 'package:project_game_critics/pages/splash_screen.dart';
 
 import 'bindings/page_bindings/home_page_binding.dart';
 import 'constants/route_constants.dart';
-import 'pages/news_details_page.dart';
+import 'pages/news/news_details_page.dart';
 
 class RouteManagement {
   static const initialRoute = RouteConstants.splash;
@@ -31,6 +34,7 @@ class RouteManagement {
     GetPage(
       name: RouteConstants.signUp,
       page: () => const SignUpPage(),
+      binding: SignupPageBinding(),
     ),
     GetPage(
       name: RouteConstants.home,
@@ -51,6 +55,11 @@ class RouteManagement {
       name: RouteConstants.gameDetailsPage,
       page: () => GameDetailsPage(),
       binding: GameDetailsBinding(),
+    ),
+    GetPage(
+      name: RouteConstants.profilePage,
+      page: () => ProfilePage(),
+      binding: ProfilePageBinding(),
     ),
   ];
 }

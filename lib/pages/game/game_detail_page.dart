@@ -1,10 +1,12 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:project_game_critics/constants/constants.dart';
-import 'package:project_game_critics/controllers/screen_controller/game_details_controller.dart';
+import 'package:project_game_critics/controllers/screen_controller/game/game_details_controller.dart';
+import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
+import 'package:project_game_critics/widgets/comment_container.dart';
 import 'package:project_game_critics/widgets/custom_primary_button.dart';
 import 'package:project_game_critics/widgets/review_container.dart';
 
@@ -48,7 +50,7 @@ class GameDetailsPage extends GetView<GameDetailsController> {
                             )
                           ],
                         ),
-                        Text(
+                        AutoSizeText(
                           controller.game!.content ?? '',
                           style: Theme.of(context).textTheme.bodyText1,
                         ),
@@ -71,6 +73,18 @@ class GameDetailsPage extends GetView<GameDetailsController> {
                         PrimaryButton(
                             text: TranslateHelper.sendYourReview,
                             onPressed: () {}),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Divider(
+                          thickness: 0.1,
+                          color: Colors.grey,
+                          height: 0.1,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        buildCommentListView(),
                         const SizedBox(height: 50),
                       ],
                     ),
@@ -83,6 +97,19 @@ class GameDetailsPage extends GetView<GameDetailsController> {
         );
       },
     );
+  }
+
+  buildCommentListView() {
+    return ListView.separated(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          return const CommentContainer();
+        },
+        separatorBuilder: (context, index) {
+          return const SizedBox(height: 10);
+        },
+        itemCount: 5);
   }
 
   _buildAppBar() {

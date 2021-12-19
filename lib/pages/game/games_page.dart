@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_game_critics/controllers/screen_controller/games_controller.dart';
+import 'package:project_game_critics/controllers/screen_controller/game/games_controller.dart';
 import 'package:project_game_critics/widgets/games_container.dart';
 
 class GamesPage extends GetView<GamesController> {

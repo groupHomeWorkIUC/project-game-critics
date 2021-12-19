@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_game_critics/controllers/screen_controller/news_controller.dart';
+import 'package:project_game_critics/controllers/screen_controller/news/news_controller.dart';
 import 'package:project_game_critics/controllers/screen_controller/tab_controllers/news_tab_controller.dart';
 import 'package:project_game_critics/widgets/news_container.dart';
 

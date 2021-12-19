@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:project_game_critics/constants/constants.dart';
-import 'package:project_game_critics/controllers/screen_controller/news_details_controller.dart';
+import 'package:project_game_critics/controllers/screen_controller/news/news_details_controller.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 
 class NewsDetailsPage extends GetView<NewsDetailsController> {

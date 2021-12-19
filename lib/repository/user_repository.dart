@@ -9,10 +9,10 @@ class UserRepository extends ApiProvider {
   static Future login({User? user}) async {
     String url = ApiConstants.login;
     Response response = await ApiProvider.postResponse(url, user!.loginForm());
-    print(user.loginForm());
 
     if (response.statusCode == 200) {
-      UserController.setAccessToken(response.body['access_token']);
+      UserController.setAccessToken(
+          response.body['token']['original']['access_token']);
       Storage.setAccessToken(UserController.getAccessToken()!);
     }
     return response;
@@ -26,6 +26,7 @@ class UserRepository extends ApiProvider {
     if (response.statusCode == 200) {
       UserController.setAccessToken(response.body['access_token']);
     }
+
     return response;
   }
 }

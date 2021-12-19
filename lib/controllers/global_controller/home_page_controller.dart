@@ -22,4 +22,8 @@ class HomePageController extends GetxController
   void goToDetailsPage({required News news}) {
     Get.toNamed(RouteConstants.newsDetailsPage, arguments: {'news': news});
   }
+
+  void goToProfilePage() {
+    Get.toNamed(RouteConstants.profilePage);
+  }
 }
