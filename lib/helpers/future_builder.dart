@@ -19,7 +19,7 @@ class FutureBuilderData extends GetWidget {
         ? FutureBuilder(
             future: future,
             builder: (context, snapshot) {
-              if (snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.done) {
                 return pageContent;
               } else {
                 return Center(child: ConstantWidgets.circularProgressIndicator);

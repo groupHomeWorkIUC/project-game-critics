@@ -15,6 +15,7 @@ class HomeTabController extends GetxController {
       LogHelper.infoLog(homeNews.first.title);
       companies = await CompanyRepository.getCompanies();
     }
+    print(companies);
     return companies;
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:project_game_critics/controllers/screen_controller/tab_controllers/games_tab_controller.dart';
 import 'package:project_game_critics/helpers/future_builder.dart';
 import 'package:project_game_critics/widgets/games_container.dart';
