@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/api_constants.dart';
 import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
+import 'package:project_game_critics/helpers/logger.dart';
 
 abstract class ApiProvider {
   static final GetConnect _getConnect = GetConnect();
@@ -14,6 +15,8 @@ abstract class ApiProvider {
         query: query,
         headers: {'Authorization': 'Bearer ' + UserController.accessToken!},
         contentType: contentType);
+    LogHelper.infoLog(
+        response.statusCode.toString() + " - " + response.body.toString());
     return response;
   }
 
@@ -23,6 +26,8 @@ abstract class ApiProvider {
       String? contentType}) async {
     Response response =
         await _getConnect.post(url, body, headers: headers, query: query);
+    LogHelper.infoLog(
+        response.statusCode.toString() + " - " + response.body.toString());
     return response;
   }
 }

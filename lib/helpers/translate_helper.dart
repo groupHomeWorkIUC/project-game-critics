@@ -5,6 +5,7 @@ class TranslateHelper {
   static String name = 'name'.tr;
   static String userName = 'userName'.tr;
   static String login = 'login'.tr;
+  static String logOut = 'logOut'.tr;
   static String signUp = 'signUp'.tr;
   static String dontHaveAnAccountSignUp = 'dontHaveAnAccountSignUp'.tr;
   static String continueWithoutLogin = 'continueWithoutLogin'.tr;
