@@ -15,8 +15,8 @@ abstract class ApiProvider {
         query: query,
         headers: {'Authorization': 'Bearer ' + UserController.accessToken!},
         contentType: contentType);
-    LogHelper.infoLog(
-        response.statusCode.toString() + " - " + response.body.toString());
+    LogHelper.infoLog("url: " + url);
+    LogHelper.infoLog(response.statusCode.toString());
     return response;
   }
 
@@ -26,8 +26,8 @@ abstract class ApiProvider {
       String? contentType}) async {
     Response response =
         await _getConnect.post(url, body, headers: headers, query: query);
-    LogHelper.infoLog(
-        response.statusCode.toString() + " - " + response.body.toString());
+    LogHelper.infoLog("url: " + url);
+    LogHelper.infoLog(response.statusCode.toString());
     return response;
   }
 }
