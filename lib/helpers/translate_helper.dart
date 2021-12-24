@@ -19,4 +19,7 @@ class TranslateHelper {
   static String couldntSignUpPleaseTryAgain =
       'couldntSignUpPleaseTryAgain'.tr; //Couldn't sign up, please try again
   static String sendYourReview = 'sendYourReview'.tr;
+  static String profilePage = "profilePage".tr;
+  static String comments = "comments".tr;
+  static String informationProfile = "informationProfile".tr;
 }
