@@ -16,4 +16,7 @@ const Map<String, String> enUS = {
   'userName': "User Name",
   'sendYourReview': "Send Your Review",
   'logOut': "Log Out",
+  "profilePage": "Profile",
+  "comments": "Comments",
+  "informationProfile": "Information Profile",
 };

@@ -1,59 +1,100 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:project_game_critics/constants/constants.dart';
 import 'package:project_game_critics/controllers/screen_controller/news/news_details_controller.dart';
+import 'package:project_game_critics/helpers/future_builder.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
+import 'package:project_game_critics/helpers/translate_helper.dart';
+import 'package:project_game_critics/widgets/comment_container.dart';
+import 'package:project_game_critics/widgets/custom_input_fields/comment_field.dart';
+import 'package:project_game_critics/widgets/custom_primary_button.dart';
 
 class NewsDetailsPage extends GetView<NewsDetailsController> {
-  NewsDetailsPage({Key? key}) : super(key: key);
+  const NewsDetailsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: _buildAppBar(),
+      body: FutureBuilderData(
+        future: controller.getNewsDetail(),
+        pageContent: buildNewsDetail(context),
+        conditions: controller.news == null,
+      ),
+    );
+  }
+
+  buildNewsDetail(BuildContext context) {
     return GetBuilder<NewsDetailsController>(
       builder: (_) {
-        return Scaffold(
-          appBar: _buildAppBar(),
-          body: Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20),
-            child: Visibility(
-              visible: controller.news != null,
-              child: Stack(
-                children: [
-                  SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          controller.news!.createdAt!,
-                          style: Theme.of(context).textTheme.bodyText2,
-                        ),
-                        Text(
-                          controller.news != null
-                              ? controller.news!.title!
-                              : '',
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                        const SizedBox(height: 20),
-                        Hero(
-                          tag: 'news' + controller.news!.id.toString(),
-                          child: Image.network(controller.news!.images!.isEmpty
-                              ? Constants.blankImage
-                              : controller.news!.images!.first.link!),
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          controller.news!.content!,
-                          style: Theme.of(context).textTheme.bodyText1,
-                        ),
-                        const SizedBox(height: 100),
-                      ],
-                    ),
-                  ),
-                  Positioned(bottom: 20, right: 0, child: buildViewContainer())
-                ],
-              ),
+        return Padding(
+          padding: const EdgeInsets.only(left: 20.0, right: 20),
+          child: Visibility(
+            visible: controller.news != null,
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  child: controller.news != null
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              controller.news!.createdAt ?? '',
+                              style: Theme.of(context).textTheme.bodyText2,
+                            ),
+                            Text(
+                              controller.news != null
+                                  ? controller.news!.title!
+                                  : '',
+                              style: Theme.of(context).textTheme.headline3,
+                            ),
+                            const SizedBox(height: 20),
+                            Hero(
+                              tag: 'news' + controller.news!.id.toString(),
+                              child: Image.network(
+                                  controller.news!.images!.isEmpty
+                                      ? Constants.blankImage
+                                      : controller.news!.images!.first.link!),
+                            ),
+                            const SizedBox(height: 20),
+                            Text(
+                              controller.news!.content ?? '',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                            const SizedBox(height: 20),
+                            const Divider(
+                              thickness: 0.1,
+                              color: Colors.grey,
+                              height: 0.1,
+                            ),
+                            const SizedBox(height: 5),
+                            buildCommentForm(),
+                            const SizedBox(height: 20),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Text(
+                                TranslateHelper.comments,
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.bodyText2,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            const Divider(
+                              thickness: 0.1,
+                              color: Colors.grey,
+                              height: 0.1,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            buildCommentListView(),
+                            const SizedBox(height: 100),
+                          ],
+                        )
+                      : const SizedBox(),
+                ),
+                Positioned(bottom: 20, right: 0, child: buildViewContainer())
+              ],
             ),
           ),
         );
@@ -69,18 +110,30 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
         color: DarkThemeColors.redColor,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(Icons.remove_red_eye, color: Colors.white),
-          const SizedBox(width: 5),
-          Text(
-            controller.news!.viewCount.toString(),
-            style: const TextStyle(
-                color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
-          ),
-        ],
-      ),
+      child: controller.news != null
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.remove_red_eye, color: Colors.white),
+                const SizedBox(width: 5),
+                Text(
+                  controller.news!.viewCount.toString(),
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                ),
+              ],
+            )
+          : const SizedBox(),
+    );
+  }
+
+  buildCommentTextField() {
+    return CommentField(
+      commentFieldController: controller.commentFieldController,
+      hintText: 'Type your comment',
+      inputFieldIcon: Icons.comment,
     );
   }
 
@@ -105,6 +158,41 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
           splashRadius: 20,
         ),
       ],
+    );
+  }
+
+  buildCommentListView() {
+    return controller.comments != null
+        ? GetBuilder<NewsDetailsController>(builder: (_) {
+            return ListView.separated(
+                reverse: true,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return CommentContainer(
+                    comment: controller.comments!.elementAt(index),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const SizedBox(height: 10);
+                },
+                itemCount: controller.comments!.length);
+          })
+        : const SizedBox();
+  }
+
+  buildCommentForm() {
+    return Form(
+      key: controller.commentFormKey,
+      child: Column(
+        children: [
+          buildCommentTextField(),
+          const SizedBox(height: 10),
+          PrimaryButton(
+              text: 'Send Your Comment',
+              onPressed: controller.onPressedSendComment),
+        ],
+      ),
     );
   }
 }
