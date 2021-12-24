@@ -51,8 +51,8 @@ class GamesContainer extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  const ReviewContainer(
-                    review: 91,
+                  ReviewContainer(
+                    review: game!.rating ?? 1,
                   )
                 ],
               ),

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 
 class ReviewContainer extends StatefulWidget {
-  final int? review;
+  final num? review;
   const ReviewContainer({Key? key, this.review}) : super(key: key);
 
   @override
@@ -12,19 +13,12 @@ class ReviewContainer extends StatefulWidget {
 class _ReviewContainerState extends State<ReviewContainer> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 24,
-      width: 24,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
-        color: DarkThemeColors.redColor,
-      ),
-      child: Center(
-        child: Text(
-          widget.review == null ? "0" : widget.review.toString(),
-          style: Theme.of(context).textTheme.overline,
-        ),
-      ),
+    return RatingStars(
+      value: widget.review!.toDouble(),
+      starColor: DarkThemeColors.redColor,
+      starCount: 5,
+      starSize: 12,
+      valueLabelVisibility: false,
     );
   }
 }

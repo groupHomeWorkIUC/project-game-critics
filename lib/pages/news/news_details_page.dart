@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/constants.dart';
+import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
 import 'package:project_game_critics/controllers/screen_controller/news/news_details_controller.dart';
 import 'package:project_game_critics/helpers/future_builder.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
@@ -39,7 +40,7 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              controller.news!.createdAt ?? '',
+                              controller.news!.releaseDate ?? '',
                               style: Theme.of(context).textTheme.bodyText2,
                             ),
                             Text(
@@ -62,14 +63,7 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
                             const SizedBox(height: 20),
-                            const Divider(
-                              thickness: 0.1,
-                              color: Colors.grey,
-                              height: 0.1,
-                            ),
-                            const SizedBox(height: 5),
                             buildCommentForm(),
-                            const SizedBox(height: 20),
                             SizedBox(
                               width: MediaQuery.of(context).size.width,
                               child: Text(
@@ -182,16 +176,26 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
   }
 
   buildCommentForm() {
-    return Form(
-      key: controller.commentFormKey,
-      child: Column(
-        children: [
-          buildCommentTextField(),
-          const SizedBox(height: 10),
-          PrimaryButton(
-              text: 'Send Your Comment',
-              onPressed: controller.onPressedSendComment),
-        ],
+    return Visibility(
+      visible: UserController.isLoggedIn(),
+      child: Form(
+        key: controller.commentFormKey,
+        child: Column(
+          children: [
+            const Divider(
+              thickness: 0.1,
+              color: Colors.grey,
+              height: 0.1,
+            ),
+            const SizedBox(height: 5),
+            buildCommentTextField(),
+            const SizedBox(height: 10),
+            PrimaryButton(
+                text: 'Send Your Comment',
+                onPressed: controller.onPressedSendComment),
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }

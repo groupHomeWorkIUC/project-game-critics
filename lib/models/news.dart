@@ -9,7 +9,7 @@ class News {
   String? content;
   String? slug;
   int? viewCount;
-  String? createdAt;
+  String? releaseDate;
   String? updatedAt;
   List<ImageModel>? images;
   List<Comment>? comments;
@@ -20,7 +20,7 @@ class News {
     this.content,
     this.slug,
     this.viewCount,
-    this.createdAt,
+    this.releaseDate,
     this.updatedAt,
     this.images,
     this.comments,
@@ -32,7 +32,7 @@ class News {
     content = json['content'];
     slug = json['slug'];
     viewCount = json['view_count'];
-    createdAt = json['created_at'];
+    releaseDate = json['release_date'];
     updatedAt = json['updated_at'];
     if (json['images'] != null) {
       images = [];
@@ -40,12 +40,12 @@ class News {
         images!.add(ImageModel.fromJson(v));
       });
     }
-    /*if (json['comments'] != null) {
+    if (json['comments'] != null) {
       comments = [];
       json['comments'].forEach((v) {
-        comments!.add(new Null.fromJson(v));
+        comments!.add(Comment.fromJson(v));
       });
-    }*/
+    }
     //reactions = json['reactions'];
   }
 
@@ -56,7 +56,7 @@ class News {
     data['content'] = content;
     data['slug'] = slug;
     data['view_count'] = viewCount;
-    data['created_at'] = createdAt;
+    data['release_date'] = releaseDate;
     data['updated_at'] = updatedAt;
     if (images != null) {
       data['images'] = images!.map((v) => v.toJson()).toList();

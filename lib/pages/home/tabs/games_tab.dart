@@ -18,15 +18,19 @@ class GamesTab extends GetView<GamesTabController> {
 
   buildGamesList() {
     return GetBuilder<GamesTabController>(builder: (_) {
-      return GridView.count(
-          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 100),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          childAspectRatio: 2 / 3,
-          children: List.generate(controller.games.length, (index) {
+      return Container(
+        margin: const EdgeInsets.only(left: 10, right: 10),
+        child: ListView.separated(
+          padding: const EdgeInsets.only(bottom: 100),
+          separatorBuilder: (context, index) {
+            return const SizedBox(height: 5);
+          },
+          itemBuilder: (context, index) {
             return GamesContainer(game: controller.games.elementAt(index));
-          }));
+          },
+          itemCount: controller.games.length,
+        ),
+      );
     });
   }
 }

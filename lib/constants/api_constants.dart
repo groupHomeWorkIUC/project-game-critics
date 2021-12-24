@@ -19,4 +19,5 @@ class ApiConstants {
   static const String login = apiUrl + '/login';
   static const String users = apiUrl + '/users';
   static const String comments = apiUrl + '/news-comments';
+  static const String gameComments = apiUrl + '/game-comments';
 }

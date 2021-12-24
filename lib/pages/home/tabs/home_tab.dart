@@ -8,7 +8,6 @@ import 'package:project_game_critics/models/company.dart';
 import 'package:project_game_critics/models/game.dart';
 import 'package:project_game_critics/models/image.dart';
 import 'package:project_game_critics/widgets/home_news_listview.dart';
-import 'package:project_game_critics/widgets/custom_input_fields/input_field.dart';
 import 'package:project_game_critics/widgets/title_and_more_text.dart';
 
 class HomeTab extends GetView<HomeTabController> {
@@ -25,7 +24,7 @@ class HomeTab extends GetView<HomeTabController> {
 
   buildHomeTab(BuildContext context) {
     return GetBuilder<HomeTabController>(
-      builder: (controller) {
+      builder: (_) {
         return SingleChildScrollView(
           child: Container(
             margin: const EdgeInsets.only(
@@ -33,11 +32,7 @@ class HomeTab extends GetView<HomeTabController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomInputField(
-                    inputFieldText: TranslateHelper.searchForGames,
-                    inputFieldIcon: Icons.search),
-                const SizedBox(height: 20),
-                buildTitleAndMoreText(context, title: TranslateHelper.news),
+                buildTitleAndMoreText(context, title: TranslateHelper.popularNews),
                 const SizedBox(height: 10),
                 // ignore: prefer_const_constructors
                 HomeNewsListView(homeNews: controller.homeNews),

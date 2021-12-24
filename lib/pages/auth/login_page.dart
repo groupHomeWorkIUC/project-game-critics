@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
-import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
 import 'package:project_game_critics/controllers/screen_controller/auth/login_page_controller.dart';
 import 'package:project_game_critics/helpers/storage.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
@@ -32,7 +31,6 @@ class LoginPage extends GetView<LoginPageController> {
                   controller: controller.loginEmailController,
                   inputFieldText: TranslateHelper.email,
                   inputFieldIcon: Icons.email,
-                  initialValue: Storage.getEmail ?? '',
                 ),
                 const SizedBox(height: 10),
                 PasswordField(
@@ -55,7 +53,7 @@ class LoginPage extends GetView<LoginPageController> {
                 ),
                 const SizedBox(height: 20),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: controller.continueWithoutLogin,
                   child: Text(
                     TranslateHelper.continueWithoutLogin,
                     style: Theme.of(context).textTheme.bodyText1,

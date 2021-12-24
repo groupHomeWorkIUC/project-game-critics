@@ -6,8 +6,8 @@ import 'package:project_game_critics/bindings/page_bindings/login_page_binding.d
 import 'package:project_game_critics/bindings/page_bindings/news_details_binding.dart';
 import 'package:project_game_critics/bindings/page_bindings/profile_page_binding.dart';
 import 'package:project_game_critics/bindings/page_bindings/signup_page_binding.dart';
-import 'package:project_game_critics/pages/auth/profile_info_page.dart';
-import 'package:project_game_critics/pages/auth/profile_page.dart';
+import 'package:project_game_critics/pages/auth/profile/profile_info_page.dart';
+import 'package:project_game_critics/pages/auth/profile/profile_page.dart';
 import 'package:project_game_critics/pages/game/game_detail_page.dart';
 import 'package:project_game_critics/pages/game/games_page.dart';
 import 'package:project_game_critics/pages/home/home_page.dart';

@@ -1,11 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
+import 'package:project_game_critics/models/comment.dart';
 
 class CommentContainer extends StatelessWidget {
-  const CommentContainer({Key? key}) : super(key: key);
+  final Comment? comment;
+
+  const CommentContainer({Key? key, this.comment}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,8 @@ class CommentContainer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const CircleAvatar(
-          backgroundColor: Colors.white,
+          backgroundImage: NetworkImage(
+              "https://media.istockphoto.com/photos/lion-picture-id899748204?k=20&m=899748204&s=612x612&w=0&h=8hCssaAkJ0FMBpnc6_lE7-7eEGhvTf_Pa_rjojszlbg="),
           radius: 15,
         ),
         //const SizedBox(width: 5),
@@ -24,11 +28,7 @@ class CommentContainer extends StatelessWidget {
     );
   }
 
-  buildCommentSection({
-    String? comment,
-    String? name,
-    int? rating,
-  }) {
+  buildCommentSection() {
     return Container(
       height: 100,
       child: Column(
@@ -37,14 +37,23 @@ class CommentContainer extends StatelessWidget {
           Row(
             children: [
               Text(
-                name ?? 'No name',
-                style: Theme.of(Get.context!).textTheme.subtitle1,
+                comment!.user!.name ?? '',
+                style: Theme.of(Get.context!).textTheme.subtitle2,
               ),
-              
+              const Spacer(),
+              comment!.rating != null
+                  ? RatingStars(
+                      starSize: 12,
+                      starColor: DarkThemeColors.redColor,
+                      value: comment!.rating!.toDouble(),
+                      valueLabelVisibility: false,
+                      starCount: 5,
+                    )
+                  : const SizedBox(),
             ],
           ),
           AutoSizeText(
-            comment ?? 'This user has no comment on this game!',
+            comment!.content ?? '',
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(Get.context!).textTheme.bodyText2,

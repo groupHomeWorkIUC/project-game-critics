@@ -19,6 +19,7 @@ class GamesController extends GetxController {
     if (games.isEmpty) {
       games = await GameRepository.getFilteredGames(companyId);
     }
+    update();
     return games;
   }
 }

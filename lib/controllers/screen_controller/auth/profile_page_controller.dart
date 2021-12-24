@@ -6,8 +6,13 @@ import 'package:project_game_critics/models/user.dart';
 
 class ProfilePageController extends GetxController {
   logOut() {
-    Storage.clearStorage();
+    Storage.clearAccessToken();
+    Storage.clearKey('user');
     UserController.user = User();
     Get.offAllNamed(RouteConstants.login);
+  }
+
+  profileInfo() {
+    Get.toNamed(RouteConstants.profileInfoPage);
   }
 }

@@ -16,7 +16,6 @@ class LoginPageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loginEmailController.text = Storage.getUser()['email'] ?? '';
   }
 
   Map loginBody() {
@@ -45,5 +44,9 @@ class LoginPageController extends GetxController {
       }
     }
     return response;
+  }
+
+  void continueWithoutLogin() {
+    Get.offAllNamed(RouteConstants.home);
   }
 }

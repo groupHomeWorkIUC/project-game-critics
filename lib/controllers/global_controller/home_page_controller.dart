@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_game_critics/constants/enums.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
-import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
+import 'package:project_game_critics/controllers/screen_controller/search_controller.dart';
 import 'package:project_game_critics/models/news.dart';
 
 class HomePageController extends GetxController
@@ -12,8 +13,8 @@ class HomePageController extends GetxController
   @override
   void onInit() {
     super.onInit();
-    tabController = TabController(length: 3, vsync: this);
-    print(UserController.user!.toJson());
+    tabController =
+        TabController(length: HomeTabPages.values.length, vsync: this);
   }
 
   void animateToPage(int pageIndex) {
@@ -27,5 +28,17 @@ class HomePageController extends GetxController
 
   void goToProfilePage() {
     Get.toNamed(RouteConstants.profilePage);
+  }
+
+  void goToLogin() {
+    Get.offAllNamed(RouteConstants.login);
+  }
+
+  void onTapOutside() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    if (Get.find<SearchController>().searchFieldController.text == '') {
+      Get.find<SearchController>().games = [];
+      Get.find<SearchController>().update();
+    }
   }
 }

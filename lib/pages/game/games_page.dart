@@ -9,31 +9,30 @@ class GamesPage extends GetView<GamesController> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilderData(
-      future: controller.getGames(),
-      pageContent: buildGames(),
-      conditions: controller.games.isEmpty,
-    );
-    //return buildGames();
-  }
-
-  Scaffold buildGames() {
     return Scaffold(
       appBar: buildAppBar(),
-      body: GetBuilder<GamesController>(builder: (_) {
-        return Container(
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          child: ListView.separated(
-              itemCount: controller.games.length,
-              separatorBuilder: (context, index) => const SizedBox(height: 10),
-              itemBuilder: (context, index) {
-                return GamesContainer(
-                  game: controller.games.elementAt(index),
-                );
-              }),
-        );
-      }),
+      body: FutureBuilderData(
+        future: controller.getGames(),
+        pageContent: buildGames(),
+        conditions: controller.games.isEmpty,
+      ),
     );
+  }
+
+  buildGames() {
+    return GetBuilder<GamesController>(builder: (_) {
+      return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        child: ListView.separated(
+            itemCount: controller.games.length,
+            separatorBuilder: (context, index) => const SizedBox(height: 10),
+            itemBuilder: (context, index) {
+              return GamesContainer(
+                game: controller.games.elementAt(index),
+              );
+            }),
+      );
+    });
   }
 
   buildAppBar() {

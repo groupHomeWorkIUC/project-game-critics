@@ -33,10 +33,8 @@ class SignupPageController extends GetxController {
 
       if (response.statusCode == 200) {
         UserController.user = User.fromJson(response.body['user']);
-        UserController.setAccessToken(
-            response.body['token']['original']['access_token']);
-        Storage.setAccessToken(
-            response.body['token']['original']['access_token']);
+        UserController.setAccessToken(response.body['token']);
+        Storage.setAccessToken(response.body['token']);
         Storage.setUser(UserController.user!);
         Get.snackbar("Message", "Successfully logged in");
         Get.offAllNamed(RouteConstants.home);

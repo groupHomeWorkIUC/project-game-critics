@@ -5,13 +5,18 @@ import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 
 class ProfilePage extends GetView<ProfilePageController> {
+  const ProfilePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(),
       body: Container(
-        margin: const EdgeInsets.only(top: 50, left: 10, right: 10),
+        margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
         child: Column(
           children: [
+            buildContainer(TranslateHelper.informationProfile, Icons.person,
+                onPressed: controller.profileInfo),
             buildContainer(TranslateHelper.logOut, Icons.logout,
                 onPressed: controller.logOut),
           ],
@@ -45,6 +50,16 @@ class ProfilePage extends GetView<ProfilePageController> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  buildAppBar() {
+    return AppBar(
+      elevation: 0,
+      title: Text(
+        TranslateHelper.profilePage,
+        textAlign: TextAlign.center,
       ),
     );
   }
