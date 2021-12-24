@@ -6,6 +6,7 @@ import 'package:project_game_critics/bindings/page_bindings/login_page_binding.d
 import 'package:project_game_critics/bindings/page_bindings/news_details_binding.dart';
 import 'package:project_game_critics/bindings/page_bindings/profile_page_binding.dart';
 import 'package:project_game_critics/bindings/page_bindings/signup_page_binding.dart';
+import 'package:project_game_critics/pages/auth/profile_info_page.dart';
 import 'package:project_game_critics/pages/auth/profile_page.dart';
 import 'package:project_game_critics/pages/game/game_detail_page.dart';
 import 'package:project_game_critics/pages/game/games_page.dart';
@@ -15,6 +16,7 @@ import 'package:project_game_critics/pages/auth/sign_up_page.dart';
 import 'package:project_game_critics/pages/splash_screen.dart';
 
 import 'bindings/page_bindings/home_page_binding.dart';
+import 'bindings/page_bindings/profile_info_page_binding.dart';
 import 'constants/route_constants.dart';
 import 'pages/news/news_details_page.dart';
 
@@ -60,6 +62,11 @@ class RouteManagement {
       name: RouteConstants.profilePage,
       page: () => ProfilePage(),
       binding: ProfilePageBinding(),
+    ),
+    GetPage(
+      name: RouteConstants.profileInfoPage,
+      page: () => ProfileInfoPage(),
+      binding: ProfileInfoPageBinding(),
     ),
   ];
 }

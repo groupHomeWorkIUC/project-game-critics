@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
+import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
 import 'package:project_game_critics/models/news.dart';
 
 class HomePageController extends GetxController
@@ -12,6 +13,7 @@ class HomePageController extends GetxController
   void onInit() {
     super.onInit();
     tabController = TabController(length: 3, vsync: this);
+    print(UserController.user!.toJson());
   }
 
   void animateToPage(int pageIndex) {

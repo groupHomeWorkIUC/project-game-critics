@@ -7,4 +7,5 @@ class RouteConstants {
   static const String gamesPage = '/GamesPage';
   static const String gameDetailsPage = '/GameDetails';
   static const String profilePage = '/ProfilePage';
+  static const String profileInfoPage = '/ProfileInfoPage';
 }
