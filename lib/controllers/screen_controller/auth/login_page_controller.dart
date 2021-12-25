@@ -7,16 +7,11 @@ import 'package:project_game_critics/models/user.dart';
 import 'package:project_game_critics/repository/user_repository.dart';
 
 class LoginPageController extends GetxController {
-  final loginFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   //Login Controllers
   TextEditingController loginEmailController = TextEditingController();
   TextEditingController loginPasswordController = TextEditingController();
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Map loginBody() {
     return {

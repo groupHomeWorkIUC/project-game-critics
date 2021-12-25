@@ -13,57 +13,61 @@ class SignUpPage extends GetView<SignupPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        margin: const EdgeInsets.only(right: 20, left: 20),
-        child: Form(
-          key: controller.signUpFormKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomInputField(
-                inputFieldText: TranslateHelper.email,
-                inputFieldIcon: Icons.email,
-                controller: controller.emailController,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Container(
+            margin: const EdgeInsets.only(right: 20, left: 20, top: 30),
+            child: Form(
+              key: controller.signUpFormKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomInputField(
+                    inputFieldText: TranslateHelper.email,
+                    inputFieldIcon: Icons.email,
+                    controller: controller.emailController,
+                  ),
+                  const SizedBox(height: 10),
+                  CustomInputField(
+                    inputFieldText: TranslateHelper.name,
+                    inputFieldIcon: Icons.person,
+                    controller: controller.nameController,
+                  ),
+                  const SizedBox(height: 10),
+                  CustomInputField(
+                    inputFieldText: TranslateHelper.userName,
+                    inputFieldIcon: Icons.supervised_user_circle,
+                    controller: controller.userNameController,
+                  ),
+                  const SizedBox(height: 10),
+                  PasswordField(
+                    textEditingController: controller.passwordController,
+                  ),
+                  const SizedBox(height: 10),
+                  PasswordField(
+                    textEditingController: controller.passwordAgainController,
+                  ),
+                  const SizedBox(height: 20),
+                  PrimaryButton(
+                    text: TranslateHelper.signUp,
+                    onPressed: () async {
+                      controller.signUp();
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: Text(
+                      TranslateHelper.alreadyHaveAnAccount,
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 10),
-              CustomInputField(
-                inputFieldText: TranslateHelper.name,
-                inputFieldIcon: Icons.person,
-                controller: controller.nameController,
-              ),
-              const SizedBox(height: 10),
-              CustomInputField(
-                inputFieldText: TranslateHelper.userName,
-                inputFieldIcon: Icons.supervised_user_circle,
-                controller: controller.userNameController,
-              ),
-              const SizedBox(height: 10),
-              PasswordField(
-                textEditingController: controller.passwordController,
-              ),
-              const SizedBox(height: 10),
-              PasswordField(
-                textEditingController: controller.passwordAgainController,
-              ),
-              const SizedBox(height: 20),
-              PrimaryButton(
-                text: TranslateHelper.signUp,
-                onPressed: () async {
-                  controller.signUp();
-                },
-              ),
-              const SizedBox(height: 20),
-              TextButton(
-                onPressed: () {
-                  Get.offNamed(RouteConstants.login);
-                },
-                child: Text(
-                  TranslateHelper.alreadyHaveAnAccount,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),

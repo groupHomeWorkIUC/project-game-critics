@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:get/get.dart';
@@ -16,7 +17,7 @@ import 'package:project_game_critics/widgets/custom_primary_button.dart';
 import 'package:project_game_critics/widgets/review_container.dart';
 
 class GameDetailsPage extends GetView<GameDetailsController> {
-  const GameDetailsPage({Key? key}) : super(key: key);
+  GameDetailsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +132,7 @@ class GameDetailsPage extends GetView<GameDetailsController> {
     return Visibility(
       visible: UserController.isLoggedIn(),
       child: Form(
-        key: controller.commentFormKey,
+        key: controller.gameCommentFormKey,
         child: Column(
           children: [
             const Divider(

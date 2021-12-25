@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
 import 'package:project_game_critics/controllers/screen_controller/auth/login_page_controller.dart';
-import 'package:project_game_critics/helpers/storage.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/widgets/custom_primary_button.dart';
 import 'package:project_game_critics/widgets/custom_input_fields/input_field.dart';

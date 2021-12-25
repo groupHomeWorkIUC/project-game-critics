@@ -13,12 +13,14 @@ class ReviewContainer extends StatefulWidget {
 class _ReviewContainerState extends State<ReviewContainer> {
   @override
   Widget build(BuildContext context) {
-    return RatingStars(
-      value: widget.review!.toDouble(),
-      starColor: DarkThemeColors.redColor,
-      starCount: 5,
-      starSize: 12,
-      valueLabelVisibility: false,
-    );
+    return widget.review != 0
+        ? RatingStars(
+            value: widget.review!.toDouble(),
+            starColor: DarkThemeColors.redColor,
+            starCount: 5,
+            starSize: 12,
+            valueLabelVisibility: false,
+          )
+        : const SizedBox();
   }
 }

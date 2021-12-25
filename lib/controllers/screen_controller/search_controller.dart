@@ -22,6 +22,7 @@ class SearchController extends GetxController {
 
   void getGamesList() async {
     if (searchFieldController.text != '') {
+      await Future.delayed(const Duration(seconds: 1));
       games =
           await GameRepository.getGamesByName(searchFieldController.value.text);
     } else {

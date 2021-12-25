@@ -9,7 +9,7 @@ import 'package:project_game_critics/repository/news_repository.dart';
 
 class NewsDetailsController extends GetxController {
   TextEditingController commentFieldController = TextEditingController();
-  final commentFormKey = GlobalKey<FormState>();
+  final newsCommentFormKey = GlobalKey<FormState>();
   List<Comment>? comments = [];
 
   News? news;
@@ -39,7 +39,7 @@ class NewsDetailsController extends GetxController {
   }
 
   onPressedSendComment() async {
-    if (commentFormKey.currentState!.validate() &&
+    if (newsCommentFormKey.currentState!.validate() &&
         UserController.user != null) {
       await sendYourComment(commentFieldController.value.text);
     }

@@ -179,7 +179,7 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
     return Visibility(
       visible: UserController.isLoggedIn(),
       child: Form(
-        key: controller.commentFormKey,
+        key: controller.newsCommentFormKey,
         child: Column(
           children: [
             const Divider(

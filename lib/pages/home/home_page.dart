@@ -20,6 +20,7 @@ class HomePage extends GetView<HomePageController> {
       return GestureDetector(
         onTap: controller.onTapOutside,
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: buildAppBar(),
           body: Stack(
             children: [

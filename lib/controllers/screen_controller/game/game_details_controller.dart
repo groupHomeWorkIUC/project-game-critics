@@ -9,7 +9,7 @@ import 'package:project_game_critics/repository/game_repository.dart';
 
 class GameDetailsController extends GetxController {
   TextEditingController commentFieldController = TextEditingController();
-  final commentFormKey = GlobalKey<FormState>();
+  final gameCommentFormKey = GlobalKey<FormState>();
 
   Game? game = Game();
   final data = Get.arguments;
@@ -43,7 +43,7 @@ class GameDetailsController extends GetxController {
   }
 
   void onPressedSendComment() async {
-    if (commentFormKey.currentState!.validate() &&
+    if (gameCommentFormKey.currentState!.validate() &&
         UserController.user != null) {
       await sendYourComment(commentFieldController.value.text);
     }
