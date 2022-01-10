@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/enums.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
-import 'package:project_game_critics/controllers/screen_controller/search_controller.dart';
+import 'package:project_game_critics/controllers/screen_controller/tab_controllers/search_controller.dart';
 import 'package:project_game_critics/models/news.dart';
 
 class HomePageController extends GetxController

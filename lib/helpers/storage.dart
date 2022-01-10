@@ -1,5 +1,4 @@
 import 'package:get_storage/get_storage.dart';
-import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
 import 'package:project_game_critics/models/user.dart';
 
 class Storage {

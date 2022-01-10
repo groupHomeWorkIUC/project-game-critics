@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:project_game_critics/constants/constants.dart';
-import 'package:project_game_critics/controllers/screen_controller/search_controller.dart';
+import 'package:project_game_critics/controllers/screen_controller/tab_controllers/search_controller.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/models/game.dart';
@@ -41,15 +42,18 @@ class SearchTab extends GetView<SearchController> {
 
   buildSearchListView() {
     return Expanded(
-      child: ListView.separated(
-        separatorBuilder: (context, index) {
-          return const SizedBox(height: 5);
-        },
-        itemBuilder: (context, index) {
-          return buildSearchResultContainer(
-              game: controller.games.elementAt(index));
-        },
-        itemCount: controller.games.length,
+      child: LazyLoadScrollView(
+        onEndOfPage: controller.getMoreGames,
+        child: ListView.separated(
+          separatorBuilder: (context, index) {
+            return const SizedBox(height: 5);
+          },
+          itemBuilder: (context, index) {
+            return buildSearchResultContainer(
+                game: controller.games.elementAt(index));
+          },
+          itemCount: controller.games.length,
+        ),
       ),
     );
   }

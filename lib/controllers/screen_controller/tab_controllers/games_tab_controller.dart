@@ -8,13 +8,13 @@ class GamesTabController extends GetxController {
 
   Future getMoreGames() async {
     page += 1;
-    games += await GameRepository.getGames();
+    games += await GameRepository.getGames(page: page.toString());
     update();
   }
 
   Future getGames() async {
     if (games.isEmpty) {
-      games = await GameRepository.getGames();
+      games = await GameRepository.getGames(page: page.toString());
     }
     return games;
   }

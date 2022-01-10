@@ -4,10 +4,13 @@ import 'package:project_game_critics/models/game.dart';
 import 'package:project_game_critics/repository/api_provider.dart';
 
 class GameRepository extends ApiProvider {
-  static Future getGames() async {
-    Response response = await ApiProvider.getResponse(ApiConstants.games);
+  static Future getGames({String? page}) async {
+    Response response =
+        await ApiProvider.getResponse(ApiConstants.games, query: {
+      'page': page ?? "1",
+    });
     List<Game> gameList = [];
-    for (var item in response.body) {
+    for (var item in response.body['data']) {
       gameList.add(Game.fromJson(item));
     }
     return gameList;
@@ -19,19 +22,22 @@ class GameRepository extends ApiProvider {
       query: {'name': name},
     );
     List<Game> gameList = [];
-    for (var item in response.body) {
+    for (var item in response.body['data']) {
       gameList.add(Game.fromJson(item));
     }
     return gameList;
   }
 
-  static Future getFilteredGames(int? id) async {
+  static Future getFilteredGames(int? id, {String? page}) async {
     Response response = await ApiProvider.getResponse(
       ApiConstants.games,
-      query: {'company_id': id.toString()},
+      query: {
+        'company_id': id.toString(),
+        'page': page ?? "1",
+      },
     );
     List<Game> gameList = [];
-    for (var item in response.body) {
+    for (var item in response.body['data']) {
       gameList.add(Game.fromJson(item));
     }
     return gameList;

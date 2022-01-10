@@ -7,11 +7,14 @@ import 'package:project_game_critics/repository/game_repository.dart';
 class SearchController extends GetxController {
   TextEditingController searchFieldController = TextEditingController();
   List<Game> games = [];
+  int page = 1;
 
   @override
   void onInit() async {
     super.onInit();
     searchFieldController.addListener(getGamesList);
+    games = await GameRepository.getGames();
+    update();
   }
 
   @override
@@ -29,6 +32,14 @@ class SearchController extends GetxController {
       games = [];
     }
     update();
+  }
+
+  void getMoreGames() async {
+    if (!searchFieldController.isBlank!) {
+      page += 1;
+      games += await GameRepository.getGames(page: page.toString());
+      update();
+    }
   }
 
   void goToGameDetailsPage(Game game) {
