@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_game_critics/constants/constants.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/models/news.dart';
 
@@ -20,7 +21,8 @@ class NewsContainer extends StatelessWidget {
           Hero(
             tag: 'news' + news!.id.toString(),
             child: Image.network(
-              news!.images!.first.link!,
+              Constants.blankImage,
+              height: 200,
             ),
           ),
           const SizedBox(height: 10),

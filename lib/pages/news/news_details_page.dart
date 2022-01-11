@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/constants.dart';
 import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
@@ -50,7 +51,7 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
                               style: Theme.of(context).textTheme.headline3,
                             ),
                             const SizedBox(height: 20),
-                            Hero(
+                            /*Hero(
                               tag: 'news' + controller.news!.id.toString(),
                               child: Image.network(
                                   controller.news!.images!.isEmpty
@@ -61,6 +62,18 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
                             Text(
                               controller.news!.content ?? '',
                               style: Theme.of(context).textTheme.bodyText1,
+                            ),*/
+                            Html(
+                              data: controller.news!.content,
+                              style: {
+                                "img": Style(
+                                  width: double.infinity,
+                                ),
+                                "p": Style(
+                                  color: Colors.white,
+                                  fontSize: FontSize.medium,
+                                )
+                              },
                             ),
                             const SizedBox(height: 20),
                             buildCommentForm(),
