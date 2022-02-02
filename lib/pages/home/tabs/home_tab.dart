@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
 import 'package:project_game_critics/controllers/screen_controller/tab_controllers/home_tab_controller.dart';
-import 'package:project_game_critics/helpers/future_builder.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/models/company.dart';
 import 'package:project_game_critics/models/game.dart';
@@ -15,11 +14,7 @@ class HomeTab extends GetView<HomeTabController> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilderData(
-      future: controller.getData(),
-      pageContent: buildHomeTab(context),
-      conditions: (controller.homeNews.isEmpty || controller.companies.isEmpty),
-    );
+    return buildHomeTab(context);
   }
 
   buildHomeTab(BuildContext context) {
@@ -32,7 +27,8 @@ class HomeTab extends GetView<HomeTabController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildTitleAndMoreText(context, title: TranslateHelper.popularNews),
+                buildTitleAndMoreText(context,
+                    title: TranslateHelper.popularNews),
                 const SizedBox(height: 10),
                 // ignore: prefer_const_constructors
                 HomeNewsListView(homeNews: controller.homeNews),

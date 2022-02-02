@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
 import 'package:project_game_critics/models/news.dart';
@@ -18,10 +17,12 @@ class NewsTabController extends GetxController {
     update();
   }
 
-  Future getNews() async {
+  @override
+  onInit() async {
+    super.onInit();
     if (newsList.isEmpty) {
       newsList = await NewsRepository.getHomeNews(page: page.toString());
     }
-    return newsList;
+    update();
   }
 }

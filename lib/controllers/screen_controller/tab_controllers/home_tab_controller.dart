@@ -8,11 +8,13 @@ class HomeTabController extends GetxController {
   List<News> homeNews = [];
   List<Company> companies = [];
 
-  Future getData() async {
+  @override
+  Future onInit() async {
+    super.onInit();
     if (homeNews.isEmpty || companies.isEmpty) {
       homeNews = await NewsRepository.getHomeNews(orderBy: "true");
       companies = await CompanyRepository.getCompanies();
     }
-    return companies;
+    update();
   }
 }

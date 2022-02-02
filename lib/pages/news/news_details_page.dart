@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
-import 'package:project_game_critics/constants/constants.dart';
 import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
 import 'package:project_game_critics/controllers/screen_controller/news/news_details_controller.dart';
-import 'package:project_game_critics/helpers/future_builder.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/widgets/comment_container.dart';
@@ -18,11 +16,7 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: FutureBuilderData(
-        future: controller.getNewsDetail(),
-        pageContent: buildNewsDetail(context),
-        conditions: controller.news == null,
-      ),
+      body: buildNewsDetail(context),
     );
   }
 

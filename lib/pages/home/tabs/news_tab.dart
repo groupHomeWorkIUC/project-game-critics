@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import 'package:project_game_critics/controllers/screen_controller/tab_controllers/news_tab_controller.dart';
-import 'package:project_game_critics/helpers/future_builder.dart';
 import 'package:project_game_critics/widgets/news_container.dart';
 
 class NewsTab extends GetView<NewsTabController> {
@@ -10,11 +9,7 @@ class NewsTab extends GetView<NewsTabController> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilderData(
-      future: controller.getNews(),
-      pageContent: buildNews(),
-      conditions: (controller.newsList.isEmpty),
-    );
+    return buildNews();
   }
 
   buildNews() {
@@ -24,7 +19,6 @@ class NewsTab extends GetView<NewsTabController> {
         child: LazyLoadScrollView(
           onEndOfPage: controller.getMoreNews,
           child: ListView.separated(
-            reverse: true,
             padding: const EdgeInsets.only(bottom: 100),
             itemCount: controller.newsList.length,
             itemBuilder: (context, index) {

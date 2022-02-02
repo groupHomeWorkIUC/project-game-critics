@@ -26,16 +26,14 @@ class NewsDetailsController extends GetxController {
     }
   }
 
-  Future getNewsDetail() async {
-    news = await NewsRepository.getNewsDetail(data['news'].id);
-    comments = news!.comments;
-    return news;
+  @override
+  onInit() async {
+    super.onInit();
+    getNewsDetail();
   }
 
   refreshComments() async {
     await getNewsDetail();
-    LogHelper.infoLog(news!.toJson());
-    update();
   }
 
   onPressedSendComment() async {
@@ -43,5 +41,11 @@ class NewsDetailsController extends GetxController {
         UserController.user != null) {
       await sendYourComment(commentFieldController.value.text);
     }
+  }
+
+  getNewsDetail() async {
+    news = await NewsRepository.getNewsDetail(data['news'].id);
+    comments = news!.comments;
+    update();
   }
 }
