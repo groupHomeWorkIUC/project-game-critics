@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/controllers/screen_controller/game/games_controller.dart';
-import 'package:project_game_critics/helpers/future_builder.dart';
 import 'package:project_game_critics/widgets/games_container.dart';
 
 class GamesPage extends GetView<GamesController> {
@@ -11,11 +10,7 @@ class GamesPage extends GetView<GamesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: FutureBuilderData(
-        future: controller.getGames(),
-        pageContent: buildGames(),
-        conditions: controller.games.isEmpty,
-      ),
+      body:  buildGames(),
     );
   }
 

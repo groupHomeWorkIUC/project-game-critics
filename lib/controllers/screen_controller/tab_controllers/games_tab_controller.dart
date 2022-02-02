@@ -12,10 +12,12 @@ class GamesTabController extends GetxController {
     update();
   }
 
-  Future getGames() async {
+  @override
+  onInit() async {
+    super.onInit();
     if (games.isEmpty) {
       games = await GameRepository.getGames(page: page.toString());
     }
-    return games;
+    update();
   }
 }

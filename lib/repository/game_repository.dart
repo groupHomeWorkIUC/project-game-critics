@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/api_constants.dart';
 import 'package:project_game_critics/models/game.dart';
@@ -9,10 +11,9 @@ class GameRepository extends ApiProvider {
         await ApiProvider.getResponse(ApiConstants.games, query: {
       'page': page ?? "1",
     });
-    List<Game> gameList = [];
-    for (var item in response.body['data']) {
-      gameList.add(Game.fromJson(item));
-    }
+
+    var list = response.body['data'] as List;
+    List<Game> gameList = list.map((e) => Game.fromJson(e)).toList();
     return gameList;
   }
 
@@ -21,10 +22,10 @@ class GameRepository extends ApiProvider {
       ApiConstants.games,
       query: {'name': name},
     );
-    List<Game> gameList = [];
-    for (var item in response.body['data']) {
-      gameList.add(Game.fromJson(item));
-    }
+
+    var list = response.body['data'] as List;
+    List<Game> gameList = list.map((e) => Game.fromJson(e)).toList();
+
     return gameList;
   }
 
@@ -36,10 +37,9 @@ class GameRepository extends ApiProvider {
         'page': page ?? "1",
       },
     );
-    List<Game> gameList = [];
-    for (var item in response.body['data']) {
-      gameList.add(Game.fromJson(item));
-    }
+
+    var list = response.body['data'] as List;
+    List<Game> gameList = list.map((e) => Game.fromJson(e)).toList();
     return gameList;
   }
 

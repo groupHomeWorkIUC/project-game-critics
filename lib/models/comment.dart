@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:project_game_critics/models/user.dart';
 
 class Comment {

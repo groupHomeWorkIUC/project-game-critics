@@ -8,7 +8,6 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:project_game_critics/constants/constants.dart';
 import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
 import 'package:project_game_critics/controllers/screen_controller/game/game_details_controller.dart';
-import 'package:project_game_critics/helpers/future_builder.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/widgets/comment_container.dart';
@@ -23,11 +22,7 @@ class GameDetailsPage extends GetView<GameDetailsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: FutureBuilderData(
-        future: controller.getGameDetail(),
-        pageContent: buildGameDetail(context),
-        conditions: true,
-      ),
+      body: buildGameDetail(context),
     );
   }
 
