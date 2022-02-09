@@ -14,6 +14,7 @@ class GamesController extends GetxController {
 
     title = Get.arguments['company_name'];
     companyId = Get.arguments['company_id'];
+    getGames();
   }
 
   Future getGames() async {
@@ -21,13 +22,11 @@ class GamesController extends GetxController {
       games = await GameRepository.getFilteredGames(companyId);
     }
     update();
-    return games;
   }
 
   Future getMoreGames() async {
     page += 1;
-    games +=
-        await GameRepository.getFilteredGames(companyId, page: page.toString());
+    games += await GameRepository.getFilteredGames(companyId, page: page.toString());
     update();
   }
 }

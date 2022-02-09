@@ -16,18 +16,20 @@ class GameDetailsController extends GetxController {
   List<Comment>? comments = [];
   num rating = 3;
 
-  Future getGameDetail() async {
+  @override
+  Future<void> onInit() async {
+    super.onInit();
+    await getGameDetail();
+  }
+
+  getGameDetail() async {
     game = await GameRepository.getGameDetails(data['gameId'].toString());
     comments = game!.comments ?? [];
-    return game;
+    update();
   }
 
   Future sendYourComment(String? content) async {
-    final response = await CommentRepository.sendGameComment(
-      content: content,
-      gameId: game!.id!,
-      rating: rating
-    );
+    final response = await CommentRepository.sendGameComment(content: content, gameId: game!.id!, rating: rating);
 
     if (response.body['message'] == 'success') {
       Get.snackbar('Message', 'You have successfully sent your comment!');
@@ -43,8 +45,7 @@ class GameDetailsController extends GetxController {
   }
 
   void onPressedSendComment() async {
-    if (gameCommentFormKey.currentState!.validate() &&
-        UserController.user != null) {
+    if (gameCommentFormKey.currentState!.validate() && UserController.user != null) {
       await sendYourComment(commentFieldController.value.text);
     }
   }

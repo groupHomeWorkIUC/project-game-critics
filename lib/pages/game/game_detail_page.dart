@@ -28,41 +28,40 @@ class GameDetailsPage extends GetView<GameDetailsController> {
 
   buildGameDetail(BuildContext context) {
     return GetBuilder<GameDetailsController>(builder: (_) {
-      return Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20),
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      return controller.game != null
+          ? Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20),
+              child: Stack(
                 children: [
-                  const SizedBox(height: 20),
-                  Image.network(controller.game!.images == null
-                      ? Constants.blankImage
-                      : controller.game!.images!.first.link!),
-                  const SizedBox(height: 20),
-                  Text(
-                    controller.game!.releaseDate ?? '',
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        controller.game!.name ?? '',
-                        style: Theme.of(context).textTheme.headline3,
-                      ),
-                      const Spacer(),
-                      ReviewContainer(
-                        review: controller.game!.rating,
-                      )
-                    ],
-                  ),
-                  AutoSizeText(
-                    controller.game!.content ?? '',
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  const SizedBox(height: 20),
-                  /*SizedBox(
+                  SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 20),
+                        Image.network(controller.game!.images == null ? Constants.blankImage : controller.game!.images!.first.link!),
+                        const SizedBox(height: 20),
+                        Text(
+                          controller.game!.releaseDate ?? '',
+                          style: Theme.of(context).textTheme.bodyText2,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              controller.game!.name ?? '',
+                              style: Theme.of(context).textTheme.headline3,
+                            ),
+                            const Spacer(),
+                            ReviewContainer(
+                              review: controller.game!.rating,
+                            )
+                          ],
+                        ),
+                        AutoSizeText(
+                          controller.game!.content ?? '',
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        const SizedBox(height: 20),
+                        /*SizedBox(
                       height: 50,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
@@ -76,23 +75,24 @@ class GameDetailsPage extends GetView<GameDetailsController> {
                                         .imageLink!);
                           }),
                     ),*/
-                  buildCommentForm(),
-                  const Divider(
-                    thickness: 0.1,
-                    color: Colors.grey,
-                    height: 0.1,
+                        buildCommentForm(),
+                        const Divider(
+                          thickness: 0.1,
+                          color: Colors.grey,
+                          height: 0.1,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        buildCommentListView(),
+                        const SizedBox(height: 50),
+                      ],
+                    ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  buildCommentListView(),
-                  const SizedBox(height: 50),
                 ],
               ),
-            ),
-          ],
-        ),
-      );
+            )
+          : const SizedBox();
     });
   }
 
@@ -104,8 +104,7 @@ class GameDetailsPage extends GetView<GameDetailsController> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return CommentContainer(
-                      comment: controller.comments!.elementAt(index));
+                  return CommentContainer(comment: controller.comments!.elementAt(index));
                 },
                 separatorBuilder: (context, index) {
                   return const SizedBox(height: 10);
@@ -155,9 +154,7 @@ class GameDetailsPage extends GetView<GameDetailsController> {
               },
             ),
             const SizedBox(height: 10),
-            PrimaryButton(
-                text: 'Send Your Comment',
-                onPressed: controller.onPressedSendComment),
+            PrimaryButton(text: 'Send Your Comment', onPressed: controller.onPressedSendComment),
             const SizedBox(height: 20),
           ],
         ),

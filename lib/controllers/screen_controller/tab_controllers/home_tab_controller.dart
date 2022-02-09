@@ -11,10 +11,12 @@ class HomeTabController extends GetxController {
   @override
   Future onInit() async {
     super.onInit();
-    if (homeNews.isEmpty || companies.isEmpty) {
-      homeNews = await NewsRepository.getHomeNews(orderBy: "true");
-      companies = await CompanyRepository.getCompanies();
-    }
+    getData();
+  }
+
+  getData() async {
+    homeNews = await NewsRepository.getHomeNews(orderBy: "true");
+    companies = await CompanyRepository.getCompanies();
     update();
   }
 }
