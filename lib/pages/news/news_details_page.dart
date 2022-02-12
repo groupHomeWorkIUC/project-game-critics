@@ -36,37 +36,22 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
                           children: [
                             Text(
                               controller.news!.releaseDate ?? '',
-                              style: Theme.of(context).textTheme.bodyText2,
+                              style: Theme.of(context).textTheme.subtitle1,
                             ),
                             Text(
-                              controller.news != null
-                                  ? controller.news!.title!
-                                  : '',
-                              style: Theme.of(context).textTheme.headline3,
+                              controller.news != null ? controller.news!.title! : '',
+                              style: Theme.of(context).textTheme.headline1,
                             ),
                             const SizedBox(height: 20),
-                            /*Hero(
-                              tag: 'news' + controller.news!.id.toString(),
-                              child: Image.network(
-                                  controller.news!.images!.isEmpty
-                                      ? Constants.blankImage
-                                      : controller.news!.images!.first.link!),
-                            ),
-                            const SizedBox(height: 20),
-                            Text(
-                              controller.news!.content ?? '',
-                              style: Theme.of(context).textTheme.bodyText1,
-                            ),*/
                             Html(
                               data: controller.news!.content,
                               style: {
-                                "img": Style(
-                                  width: double.infinity,
+                                "body": Style(
+                                  margin: EdgeInsets.zero,
+                                  fontSize: FontSize(Theme.of(Get.context!).textTheme.bodyText1!.fontSize),
+                                  fontWeight: Theme.of(Get.context!).textTheme.bodyText1!.fontWeight,
+                                  color: Theme.of(Get.context!).textTheme.bodyText1!.color,
                                 ),
-                                "p": Style(
-                                  color: Colors.white,
-                                  fontSize: FontSize.medium,
-                                )
                               },
                             ),
                             const SizedBox(height: 20),
@@ -108,21 +93,21 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
       width: 120,
       height: 40,
       decoration: BoxDecoration(
-        color: DarkThemeColors.redColor,
+        color: Theme.of(Get.context!).primaryColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: controller.news != null
           ? Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.remove_red_eye, color: Colors.white),
+                Icon(
+                  Icons.remove_red_eye,
+                  color: Theme.of(Get.context!).iconTheme.color,
+                ),
                 const SizedBox(width: 5),
                 Text(
                   controller.news!.viewCount.toString(),
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500),
+                  style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
                 ),
               ],
             )
@@ -141,22 +126,18 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
   _buildAppBar() {
     return AppBar(
       elevation: 0,
-      leading: IconButton(
-          splashRadius: 20,
-          onPressed: () {
-            Get.back();
-          },
-          icon: const Icon(Icons.arrow_back)),
       actions: [
         IconButton(
           onPressed: () {},
           icon: const Icon(Icons.share),
           splashRadius: 20,
+          color: Theme.of(Get.context!).iconTheme.color,
         ),
         IconButton(
           onPressed: () {},
           icon: const Icon(Icons.bookmark),
           splashRadius: 20,
+          color: Theme.of(Get.context!).iconTheme.color,
         ),
       ],
     );
@@ -197,9 +178,7 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
             const SizedBox(height: 5),
             buildCommentTextField(),
             const SizedBox(height: 10),
-            PrimaryButton(
-                text: 'Send Your Comment',
-                onPressed: controller.onPressedSendComment),
+            PrimaryButton(text: 'Send Your Comment', onPressed: controller.onPressedSendComment),
             const SizedBox(height: 20),
           ],
         ),

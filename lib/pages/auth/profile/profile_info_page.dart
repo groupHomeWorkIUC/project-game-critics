@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:project_game_critics/controllers/screen_controller/auth/profile_info_page_controller.dart';
-import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 
 class ProfileInfoPage extends GetView<ProfileInfoPageController> {
@@ -37,7 +34,7 @@ class ProfileInfoPage extends GetView<ProfileInfoPageController> {
       padding: const EdgeInsets.only(left: 10, right: 10),
       height: 50,
       decoration: BoxDecoration(
-        color: DarkThemeColors.secondaryBackgroundColor,
+        color: Theme.of(Get.context!).cardColor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

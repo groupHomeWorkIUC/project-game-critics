@@ -39,6 +39,7 @@ class GamesPage extends GetView<GamesController> {
           onPressed: () {},
           icon: const Icon(Icons.filter_alt),
           splashRadius: 20,
+          color: Theme.of(Get.context!).iconTheme.color,
         ),
       ],
     );

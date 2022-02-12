@@ -16,14 +16,13 @@ class GamesContainer extends StatelessWidget {
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: () {
-        Get.toNamed(RouteConstants.gameDetailsPage,
-            arguments: {'gameId': game!.id});
+        Get.toNamed(RouteConstants.gameDetailsPage, arguments: {'gameId': game!.id});
       },
       child: Container(
         height: 300,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: DarkThemeColors.secondaryBackgroundColor,
+          color: Theme.of(Get.context!).cardColor,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Column(
@@ -45,7 +44,7 @@ class GamesContainer extends StatelessWidget {
                   Expanded(
                     child: Text(
                       game!.name!,
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: Theme.of(context).textTheme.headline2,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -63,7 +62,7 @@ class GamesContainer extends StatelessWidget {
                 game!.content!,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             ),
           ],

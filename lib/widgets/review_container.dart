@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
+import 'package:get/get.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 
 class ReviewContainer extends StatefulWidget {
@@ -16,7 +17,7 @@ class _ReviewContainerState extends State<ReviewContainer> {
     return widget.review != 0
         ? RatingStars(
             value: widget.review!.toDouble(),
-            starColor: DarkThemeColors.redColor,
+            starColor: Theme.of(Get.context!).primaryColor,
             starCount: 5,
             starSize: 12,
             valueLabelVisibility: false,

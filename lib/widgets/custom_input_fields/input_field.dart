@@ -7,13 +7,7 @@ class CustomInputField extends StatefulWidget {
   final IconData inputFieldIcon;
   final TextEditingController? controller;
   final String? initialValue;
-  const CustomInputField(
-      {Key? key,
-      this.initialValue,
-      required this.inputFieldText,
-      required this.inputFieldIcon,
-      this.controller})
-      : super(key: key);
+  const CustomInputField({Key? key, this.initialValue, required this.inputFieldText, required this.inputFieldIcon, this.controller}) : super(key: key);
 
   @override
   _CustomInputFieldState createState() => _CustomInputFieldState();
@@ -25,7 +19,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
     return Container(
       padding: const EdgeInsets.only(left: 15),
       decoration: BoxDecoration(
-        color: DarkThemeColors.secondaryBackgroundColor,
+        color: Theme.of(Get.context!).cardColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextFormField(
@@ -37,14 +31,13 @@ class _CustomInputFieldState extends State<CustomInputField> {
           }
           return null;
         },
-        style: TextStyle(
-            color: DarkThemeColors.greyTextColor, fontWeight: FontWeight.w300),
+        style: TextStyle(color: DarkThemeColors.secondaryTextColor, fontWeight: FontWeight.w300),
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: widget.inputFieldText,
           icon: Icon(
             widget.inputFieldIcon,
-            color: DarkThemeColors.greyTextColor,
+            color: Theme.of(Get.context!).iconTheme.color,
             size: 20.0,
           ),
         ),

@@ -39,4 +39,12 @@ class Storage {
   static String? get getEmail {
     return _storage.read('email');
   }
+
+  static bool? get darkThemeEnabled {
+    return _storage.read('darkModeEnabled') ?? false;
+  }
+
+  static void setDarkThemeEnabled(bool value) {
+    _storage.write('darkModeEnabled', value);
+  }
 }

@@ -38,13 +38,13 @@ class CommentContainer extends StatelessWidget {
             children: [
               Text(
                 comment!.user!.name ?? '',
-                style: Theme.of(Get.context!).textTheme.subtitle2,
+                style: Theme.of(Get.context!).textTheme.headline3,
               ),
               const Spacer(),
               comment!.rating != null
                   ? RatingStars(
                       starSize: 12,
-                      starColor: DarkThemeColors.redColor,
+                      starColor: Theme.of(Get.context!).primaryColor,
                       value: comment!.rating!.toDouble(),
                       valueLabelVisibility: false,
                       starCount: 5,
@@ -56,14 +56,14 @@ class CommentContainer extends StatelessWidget {
             comment!.content ?? '',
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(Get.context!).textTheme.bodyText2,
+            style: Theme.of(Get.context!).textTheme.subtitle2,
           ),
         ],
       ),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
       width: MediaQuery.of(Get.context!).size.width * 0.8,
       decoration: BoxDecoration(
-        color: DarkThemeColors.secondaryBackgroundColor,
+        color: Theme.of(Get.context!).cardColor,
         borderRadius: BorderRadius.circular(8),
       ),
     );

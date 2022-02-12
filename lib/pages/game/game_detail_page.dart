@@ -1,15 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:project_game_critics/constants/constants.dart';
 import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
 import 'package:project_game_critics/controllers/screen_controller/game/game_details_controller.dart';
-import 'package:project_game_critics/helpers/themes/colors.dart';
-import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/widgets/comment_container.dart';
 import 'package:project_game_critics/widgets/custom_input_fields/comment_field.dart';
 import 'package:project_game_critics/widgets/custom_primary_button.dart';
@@ -42,17 +37,17 @@ class GameDetailsPage extends GetView<GameDetailsController> {
                         const SizedBox(height: 20),
                         Text(
                           controller.game!.releaseDate ?? '',
-                          style: Theme.of(context).textTheme.bodyText2,
+                          style: Theme.of(context).textTheme.subtitle1
                         ),
                         Row(
                           children: [
                             Text(
                               controller.game!.name ?? '',
-                              style: Theme.of(context).textTheme.headline3,
+                              style: Theme.of(context).textTheme.headline1,
                             ),
                             const Spacer(),
                             ReviewContainer(
-                              review: controller.game!.rating,
+                              review: controller.game!.rating ?? 1,
                             )
                           ],
                         ),
@@ -146,7 +141,7 @@ class GameDetailsPage extends GetView<GameDetailsController> {
               itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
               itemBuilder: (context, _) => Icon(
                 Icons.star,
-                color: DarkThemeColors.redColor,
+                color: Theme.of(Get.context!).primaryColor,
               ),
               unratedColor: Colors.white,
               onRatingUpdate: (rating) {
@@ -175,16 +170,19 @@ class GameDetailsPage extends GetView<GameDetailsController> {
           onPressed: () {},
           icon: const Icon(Icons.favorite_border),
           splashRadius: 20,
+          color: Theme.of(Get.context!).iconTheme.color,
         ),
         IconButton(
           onPressed: () {},
           icon: const Icon(Icons.share),
           splashRadius: 20,
+          color: Theme.of(Get.context!).iconTheme.color,
         ),
         IconButton(
           onPressed: () {},
           icon: const Icon(Icons.bookmark),
           splashRadius: 20,
+          color: Theme.of(Get.context!).iconTheme.color,
         ),
       ],
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:project_game_critics/helpers/themes/dark_theme.dart';
+import 'package:project_game_critics/helpers/themes/themes.dart';
 import 'package:project_game_critics/route_management.dart';
 import 'package:project_game_critics/services/translation_service.dart';
 
@@ -23,7 +23,9 @@ GetMaterialApp materialApp = GetMaterialApp(
   locale: LocalizationService.locale,
   fallbackLocale: LocalizationService.fallbackLocale,
   translations: LocalizationService(),
-  theme: darkTheme,
+  darkTheme: Themes.darkTheme,
+  theme: Themes.lightTheme,
+  themeMode: ThemeMode.light,
 );
 
 class MyBehavior extends ScrollBehavior {

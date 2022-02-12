@@ -11,7 +11,7 @@ class HomeTabController extends GetxController {
   @override
   Future onInit() async {
     super.onInit();
-    getData();
+    await getData();
   }
 
   getData() async {

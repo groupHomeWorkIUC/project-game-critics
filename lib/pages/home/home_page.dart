@@ -24,15 +24,12 @@ class HomePage extends GetView<HomePageController> {
           appBar: buildAppBar(),
           body: Stack(
             children: [
-              TabBarView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  controller: controller.tabController,
-                  children: const [
-                    HomeTab(),
-                    GamesTab(),
-                    NewsTab(),
-                    SearchTab(),
-                  ]),
+              TabBarView(physics: const NeverScrollableScrollPhysics(), controller: controller.tabController, children: const [
+                HomeTab(),
+                GamesTab(),
+                NewsTab(),
+                SearchTab(),
+              ]),
               Positioned(
                 bottom: 0,
                 left: 60,
@@ -45,29 +42,25 @@ class HomePage extends GetView<HomePageController> {
                             iconData: Icons.home_filled,
                             isCurrentPage: controller.tabController.index == 0,
                             onPressed: () {
-                              controller
-                                  .animateToPage(HomeTabPages.homeTab.index);
+                              controller.animateToPage(HomeTabPages.homeTab.index);
                             }),
                         buildIconButtonWithLabel(
                             iconData: Icons.gamepad_rounded,
                             isCurrentPage: controller.tabController.index == 1,
                             onPressed: () {
-                              controller
-                                  .animateToPage(HomeTabPages.gamesTab.index);
+                              controller.animateToPage(HomeTabPages.gamesTab.index);
                             }),
                         buildIconButtonWithLabel(
                             iconData: Icons.article_rounded,
                             isCurrentPage: controller.tabController.index == 2,
                             onPressed: () {
-                              controller
-                                  .animateToPage(HomeTabPages.newsTab.index);
+                              controller.animateToPage(HomeTabPages.newsTab.index);
                             }),
                         buildIconButtonWithLabel(
                             iconData: Icons.search,
                             isCurrentPage: controller.tabController.index == 3,
                             onPressed: () {
-                              controller
-                                  .animateToPage(HomeTabPages.searchTab.index);
+                              controller.animateToPage(HomeTabPages.searchTab.index);
                             }),
                       ],
                     );
@@ -86,7 +79,10 @@ class HomePage extends GetView<HomePageController> {
       elevation: 0,
       title: Text(
         Constants.appName,
-        style: Theme.of(Get.context!).textTheme.headline4,
+        style: Theme.of(Get.context!).textTheme.headline1!.copyWith(
+              color: Theme.of(Get.context!).primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
       ),
       actions: [
         Visibility(
@@ -105,24 +101,26 @@ class HomePage extends GetView<HomePageController> {
         Visibility(
           visible: !UserController.isLoggedIn(),
           child: IconButton(
-              onPressed: controller.goToLogin, icon: const Icon(Icons.login)),
+            onPressed: controller.goToLogin,
+            icon: const Icon(
+              Icons.login,
+            ),
+            color: Theme.of(Get.context!).iconTheme.color,
+          ),
         ),
         const SizedBox(width: 20),
       ],
     );
   }
 
-  buildIconButtonWithLabel(
-      {required IconData iconData,
-      required Function() onPressed,
-      bool? isCurrentPage}) {
+  buildIconButtonWithLabel({required IconData iconData, required Function() onPressed, bool? isCurrentPage}) {
     return IconButton(
       onPressed: onPressed,
       icon: Icon(
         iconData,
-        color: isCurrentPage! ? Colors.white : DarkThemeColors.backgroundColor,
+        color: isCurrentPage! ? Colors.white : Colors.black,
       ),
-      color: Colors.white,
+      color: Theme.of(Get.context!).iconTheme.color,
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
     );

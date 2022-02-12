@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project_game_critics/helpers/themes/colors.dart';
+import 'package:get/get.dart';
 
 class ConstantWidgets {
   static var circularProgressIndicator = CircularProgressIndicator(
-    color: DarkThemeColors.redColor,
+    color: Theme.of(Get.context!).primaryColor,
   );
 }

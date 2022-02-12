@@ -31,10 +31,7 @@ class SearchTab extends GetView<SearchController> {
   buildSearchField() {
     return Column(
       children: [
-        CustomInputField(
-            controller: controller.searchFieldController,
-            inputFieldText: TranslateHelper.searchForGames,
-            inputFieldIcon: Icons.search),
+        CustomInputField(controller: controller.searchFieldController, inputFieldText: TranslateHelper.searchForGames, inputFieldIcon: Icons.search),
         const SizedBox(height: 20),
       ],
     );
@@ -49,8 +46,7 @@ class SearchTab extends GetView<SearchController> {
             return const SizedBox(height: 5);
           },
           itemBuilder: (context, index) {
-            return buildSearchResultContainer(
-                game: controller.games.elementAt(index));
+            return buildSearchResultContainer(game: controller.games.elementAt(index));
           },
           itemCount: controller.games.length,
         ),
@@ -71,18 +67,14 @@ class SearchTab extends GetView<SearchController> {
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: DarkThemeColors.secondaryBackgroundColor,
+                color: Theme.of(Get.context!).cardColor,
               ),
               child: Row(
                 children: [
                   ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(8),
-                        bottomLeft: Radius.circular(8)),
+                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(8), bottomLeft: Radius.circular(8)),
                     child: Image.network(
-                      game.images != null
-                          ? game.images!.first.link!
-                          : Constants.blankImage,
+                      game.images != null ? game.images!.first.link! : Constants.blankImage,
                       width: 80,
                       fit: BoxFit.cover,
                     ),
@@ -90,7 +82,7 @@ class SearchTab extends GetView<SearchController> {
                   const SizedBox(width: 10),
                   Text(
                     game.name ?? '',
-                    style: Theme.of(Get.context!).textTheme.subtitle2,
+                    style: Theme.of(Get.context!).textTheme.headline2,
                   ),
                   const Spacer(),
                   ReviewContainer(

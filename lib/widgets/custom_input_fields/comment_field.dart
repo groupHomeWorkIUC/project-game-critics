@@ -6,19 +6,14 @@ class CommentField extends StatelessWidget {
   final TextEditingController commentFieldController;
   final String? hintText;
   final IconData? inputFieldIcon;
-  const CommentField(
-      {Key? key,
-      required this.commentFieldController,
-      this.hintText,
-      this.inputFieldIcon})
-      : super(key: key);
+  const CommentField({Key? key, required this.commentFieldController, this.hintText, this.inputFieldIcon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 15),
       decoration: BoxDecoration(
-        color: DarkThemeColors.secondaryBackgroundColor,
+        color: Theme.of(Get.context!).cardColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextFormField(
@@ -31,8 +26,7 @@ class CommentField extends StatelessWidget {
           }
           return null;
         },
-        style: TextStyle(
-            color: DarkThemeColors.greyTextColor, fontWeight: FontWeight.w300),
+        style: Theme.of(Get.context!).textTheme.subtitle2,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: hintText,

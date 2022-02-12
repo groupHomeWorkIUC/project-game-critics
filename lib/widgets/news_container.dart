@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:project_game_critics/constants/constants.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/models/news.dart';
@@ -13,22 +14,23 @@ class NewsContainer extends StatelessWidget {
       height: 350,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: DarkThemeColors.secondaryBackgroundColor,
+        color: Theme.of(Get.context!).cardColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Hero(
             tag: 'news' + news!.id.toString(),
             child: Image.network(
-              Constants.blankImage,
-              height: 200,
+              news!.images!.first.link ?? Constants.blankImage,
+              fit: BoxFit.fitHeight,
             ),
           ),
           const SizedBox(height: 10),
           Text(
             news!.title!,
-            style: Theme.of(context).textTheme.caption,
+            style: Theme.of(context).textTheme.headline2,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),

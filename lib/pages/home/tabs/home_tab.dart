@@ -22,45 +22,32 @@ class HomeTab extends GetView<HomeTabController> {
       builder: (_) {
         return SingleChildScrollView(
           child: Container(
-            margin: const EdgeInsets.only(
-                left: 10, right: 10, top: 25, bottom: 100),
+            margin: const EdgeInsets.only(left: 10, right: 10, top: 25, bottom: 100),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildTitleAndMoreText(context,
-                    title: TranslateHelper.popularNews),
+                buildTitleAndMoreText(context, title: TranslateHelper.popularNews),
                 const SizedBox(height: 10),
                 // ignore: prefer_const_constructors
                 HomeNewsListView(homeNews: controller.homeNews),
                 const SizedBox(height: 20),
-                Text(
-                  TranslateHelper.companies,
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
+                Text(TranslateHelper.companies, style: Theme.of(context).textTheme.headline3),
                 const SizedBox(height: 10),
                 buildCompaniesListView(controller.companies),
                 const SizedBox(height: 20),
                 Text(
                   TranslateHelper.popularGames,
-                  style: Theme.of(context).textTheme.subtitle1,
+                  style: Theme.of(context).textTheme.headline3,
                 ),
                 const SizedBox(height: 10),
                 buildPopularGames([
+                  Game(
+                      images: [ImageModel(link: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Days_Gone_cover_art.jpg/220px-Days_Gone_cover_art.jpg')]),
                   Game(images: [
                     ImageModel(
-                        link:
-                            'https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Days_Gone_cover_art.jpg/220px-Days_Gone_cover_art.jpg')
+                        link: 'https://cdn1.epicgames.com/salesEvent/salesEvent/MetroExodus-PCEnhancedEdition_S2_1200x1600-64a550825c1427140460cc3a86cafdb5')
                   ]),
-                  Game(images: [
-                    ImageModel(
-                        link:
-                            'https://cdn1.epicgames.com/salesEvent/salesEvent/MetroExodus-PCEnhancedEdition_S2_1200x1600-64a550825c1427140460cc3a86cafdb5')
-                  ]),
-                  Game(images: [
-                    ImageModel(
-                        link:
-                            'https://upload.wikimedia.org/wikipedia/tr/6/62/The_Last_of_Us_Part_II_cover_art.png')
-                  ]),
+                  Game(images: [ImageModel(link: 'https://upload.wikimedia.org/wikipedia/tr/6/62/The_Last_of_Us_Part_II_cover_art.png')]),
                   Game(images: [
                     ImageModel(
                         link:
@@ -84,10 +71,7 @@ class HomeTab extends GetView<HomeTabController> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              Get.toNamed(RouteConstants.gamesPage, arguments: {
-                'company_id': company.elementAt(index).id,
-                'company_name': company.elementAt(index).name
-              });
+              Get.toNamed(RouteConstants.gamesPage, arguments: {'company_id': company.elementAt(index).id, 'company_name': company.elementAt(index).name});
             },
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,

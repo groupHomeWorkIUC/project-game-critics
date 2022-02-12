@@ -50,7 +50,7 @@ class HomeNewsListView extends GetView {
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: DarkThemeColors.secondaryBackgroundColor,
+          color: Theme.of(Get.context!).cardColor,
           borderRadius: BorderRadius.circular(8),
         ),
         width: 300,
@@ -72,7 +72,7 @@ class HomeNewsListView extends GetView {
               news!.title!,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(Get.context!).textTheme.caption,
+              style: Theme.of(Get.context!).textTheme.headline2,
             ),
             // ignore: sized_box_for_whitespace
             Container(

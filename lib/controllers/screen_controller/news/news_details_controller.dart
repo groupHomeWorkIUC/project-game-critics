@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
-import 'package:project_game_critics/helpers/logger.dart';
 import 'package:project_game_critics/models/comment.dart';
 import 'package:project_game_critics/models/news.dart';
 import 'package:project_game_critics/repository/comment_repository.dart';

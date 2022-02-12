@@ -6,14 +6,13 @@ import 'package:project_game_critics/helpers/translate_helper.dart';
 class PasswordField extends GetView {
   final TextEditingController? textEditingController;
   final String? initialValue;
-  const PasswordField({Key? key, this.textEditingController, this.initialValue})
-      : super(key: key);
+  const PasswordField({Key? key, this.textEditingController, this.initialValue}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 15),
       decoration: BoxDecoration(
-        color: DarkThemeColors.secondaryBackgroundColor,
+        color: Theme.of(Get.context!).cardColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: TextFormField(
@@ -28,14 +27,13 @@ class PasswordField extends GetView {
         obscureText: true,
         enableSuggestions: false,
         autocorrect: false,
-        style: TextStyle(
-            color: DarkThemeColors.greyTextColor, fontWeight: FontWeight.w300),
+        style: TextStyle(color: DarkThemeColors.secondaryTextColor, fontWeight: FontWeight.w300),
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: TranslateHelper.password,
           icon: Icon(
             Icons.lock,
-            color: DarkThemeColors.greyTextColor,
+            color: DarkThemeColors.secondaryTextColor,
             size: 20.0,
           ),
         ),
