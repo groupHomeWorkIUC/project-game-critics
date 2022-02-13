@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:project_game_critics/helpers/storage.dart';
 import 'package:project_game_critics/helpers/themes/themes.dart';
 import 'package:project_game_critics/route_management.dart';
 import 'package:project_game_critics/services/translation_service.dart';
@@ -25,13 +26,12 @@ GetMaterialApp materialApp = GetMaterialApp(
   translations: LocalizationService(),
   darkTheme: Themes.darkTheme,
   theme: Themes.lightTheme,
-  themeMode: ThemeMode.light,
+  themeMode: Storage.darkThemeEnabled! ? ThemeMode.dark : ThemeMode.light,
 );
 
 class MyBehavior extends ScrollBehavior {
   @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
+  Widget buildViewportChrome(BuildContext context, Widget child, AxisDirection axisDirection) {
     return child;
   }
 }
