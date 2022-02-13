@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/constants/route_constants.dart';
+import 'package:project_game_critics/constants/widgets.dart';
 import 'package:project_game_critics/controllers/screen_controller/tab_controllers/home_tab_controller.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 import 'package:project_game_critics/models/company.dart';
@@ -20,44 +21,48 @@ class HomeTab extends GetView<HomeTabController> {
   buildHomeTab(BuildContext context) {
     return GetBuilder<HomeTabController>(
       builder: (_) {
-        return SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.only(left: 10, right: 10, top: 25, bottom: 100),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildTitleAndMoreText(context, title: TranslateHelper.popularNews),
-                const SizedBox(height: 10),
-                // ignore: prefer_const_constructors
-                HomeNewsListView(homeNews: controller.homeNews),
-                const SizedBox(height: 20),
-                Text(TranslateHelper.companies, style: Theme.of(context).textTheme.headline3),
-                const SizedBox(height: 10),
-                buildCompaniesListView(controller.companies),
-                const SizedBox(height: 20),
-                Text(
-                  TranslateHelper.popularGames,
-                  style: Theme.of(context).textTheme.headline3,
+        return controller.isLoading
+            ? ConstantWidgets.circularProgressIndicator
+            : SingleChildScrollView(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 10, right: 10, top: 25, bottom: 100),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      buildTitleAndMoreText(context, title: TranslateHelper.popularNews),
+                      const SizedBox(height: 10),
+                      // ignore: prefer_const_constructors
+                      HomeNewsListView(homeNews: controller.homeNews),
+                      const SizedBox(height: 20),
+                      Text(TranslateHelper.companies, style: Theme.of(context).textTheme.headline3),
+                      const SizedBox(height: 10),
+                      buildCompaniesListView(controller.companies),
+                      const SizedBox(height: 20),
+                      Text(
+                        TranslateHelper.popularGames,
+                        style: Theme.of(context).textTheme.headline3,
+                      ),
+                      const SizedBox(height: 10),
+                      buildPopularGames([
+                        Game(images: [
+                          ImageModel(link: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Days_Gone_cover_art.jpg/220px-Days_Gone_cover_art.jpg')
+                        ]),
+                        Game(images: [
+                          ImageModel(
+                              link:
+                                  'https://cdn1.epicgames.com/salesEvent/salesEvent/MetroExodus-PCEnhancedEdition_S2_1200x1600-64a550825c1427140460cc3a86cafdb5')
+                        ]),
+                        Game(images: [ImageModel(link: 'https://upload.wikimedia.org/wikipedia/tr/6/62/The_Last_of_Us_Part_II_cover_art.png')]),
+                        Game(images: [
+                          ImageModel(
+                              link:
+                                  'https://cdn.vox-cdn.com/thumbor/V1qL4srH5jU6d2wLjtUtOrXSfQc=/0x0:3840x2160/1200x800/filters:focal(1574x364:2188x978)/cdn.vox-cdn.com/uploads/chorus_image/image/67762022/EmZ365SW8AEkLm0.0.jpeg')
+                        ])
+                      ]),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: 10),
-                buildPopularGames([
-                  Game(
-                      images: [ImageModel(link: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Days_Gone_cover_art.jpg/220px-Days_Gone_cover_art.jpg')]),
-                  Game(images: [
-                    ImageModel(
-                        link: 'https://cdn1.epicgames.com/salesEvent/salesEvent/MetroExodus-PCEnhancedEdition_S2_1200x1600-64a550825c1427140460cc3a86cafdb5')
-                  ]),
-                  Game(images: [ImageModel(link: 'https://upload.wikimedia.org/wikipedia/tr/6/62/The_Last_of_Us_Part_II_cover_art.png')]),
-                  Game(images: [
-                    ImageModel(
-                        link:
-                            'https://cdn.vox-cdn.com/thumbor/V1qL4srH5jU6d2wLjtUtOrXSfQc=/0x0:3840x2160/1200x800/filters:focal(1574x364:2188x978)/cdn.vox-cdn.com/uploads/chorus_image/image/67762022/EmZ365SW8AEkLm0.0.jpeg')
-                  ])
-                ]),
-              ],
-            ),
-          ),
-        );
+              );
       },
     );
   }

@@ -7,6 +7,7 @@ import 'package:project_game_critics/repository/news_repository.dart';
 class HomeTabController extends GetxController {
   List<News> homeNews = [];
   List<Company> companies = [];
+  bool isLoading = true;
 
   @override
   Future onInit() async {
@@ -17,6 +18,11 @@ class HomeTabController extends GetxController {
   getData() async {
     homeNews = await NewsRepository.getHomeNews(orderBy: "true");
     companies = await CompanyRepository.getCompanies();
+
+    if (homeNews.isNotEmpty || companies.isNotEmpty) {
+      isLoading = false;
+    }
+
     update();
   }
 }

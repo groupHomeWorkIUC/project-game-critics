@@ -11,7 +11,6 @@ class NewsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Theme.of(Get.context!).cardColor,
@@ -23,13 +22,13 @@ class NewsContainer extends StatelessWidget {
           Hero(
             tag: 'news' + news!.id.toString(),
             child: Image.network(
-              news!.images!.first.link ?? Constants.blankImage,
-              fit: BoxFit.fitHeight,
+              news!.images == null || news!.images!.isEmpty ? Constants.blankImage : news!.images!.first.link!,
+              fit: BoxFit.fitWidth,
             ),
           ),
           const SizedBox(height: 10),
           Text(
-            news!.title!,
+            news!.title ?? "",
             style: Theme.of(context).textTheme.headline2,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,

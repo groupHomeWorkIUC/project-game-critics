@@ -11,12 +11,13 @@ class NewsDetailsController extends GetxController {
   final newsCommentFormKey = GlobalKey<FormState>();
   List<Comment>? comments = [];
 
+  bool isLoading = true;
+
   News? news;
   final data = Get.arguments;
 
   Future sendYourComment(String? content) async {
-    final response = await CommentRepository.sendComment(
-        content: content, newsId: news!.id!);
+    final response = await CommentRepository.sendComment(content: content, newsId: news!.id!);
 
     if (response.body['message'] == 'success') {
       Get.snackbar('Message', 'You have successfully sent your comment!');
@@ -36,8 +37,7 @@ class NewsDetailsController extends GetxController {
   }
 
   onPressedSendComment() async {
-    if (newsCommentFormKey.currentState!.validate() &&
-        UserController.user != null) {
+    if (newsCommentFormKey.currentState!.validate() && UserController.user != null) {
       await sendYourComment(commentFieldController.value.text);
     }
   }
@@ -45,6 +45,9 @@ class NewsDetailsController extends GetxController {
   getNewsDetail() async {
     news = await NewsRepository.getNewsDetail(data['news'].id);
     comments = news!.comments;
+    if (news != null) {
+      isLoading = false;
+    }
     update();
   }
 }

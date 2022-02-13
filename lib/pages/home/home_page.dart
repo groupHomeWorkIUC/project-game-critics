@@ -87,15 +87,9 @@ class HomePage extends GetView<HomePageController> {
       actions: [
         Visibility(
           visible: UserController.isLoggedIn(),
-          child: InkWell(
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            child: const CircleAvatar(
-              radius: 15,
-              backgroundImage: NetworkImage(
-                  "https://media.istockphoto.com/photos/lion-picture-id899748204?k=20&m=899748204&s=612x612&w=0&h=8hCssaAkJ0FMBpnc6_lE7-7eEGhvTf_Pa_rjojszlbg="),
-            ),
-            onTap: controller.goToProfilePage,
+          child: IconButton(
+            onPressed: controller.goToProfilePage,
+            icon: const Icon(Icons.settings),
           ),
         ),
         Visibility(
@@ -108,7 +102,6 @@ class HomePage extends GetView<HomePageController> {
             color: Theme.of(Get.context!).iconTheme.color,
           ),
         ),
-        const SizedBox(width: 20),
       ],
     );
   }
