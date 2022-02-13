@@ -3,6 +3,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/controllers/screen_controller/auth/profile_page_controller.dart';
 import 'package:project_game_critics/helpers/storage.dart';
+import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 
 class ProfilePage extends GetView<ProfilePageController> {
@@ -19,9 +20,10 @@ class ProfilePage extends GetView<ProfilePageController> {
             child: Column(
               children: [
                 buildContainer(TranslateHelper.informationProfile, Icons.person, onPressed: controller.profileInfo),
-                buildContainer(TranslateHelper.logOut, Icons.logout, onPressed: controller.logOut),
-                const SizedBox(height: 10),
+                const SizedBox(height: 5),
                 buildThemeSwitch(),
+                const SizedBox(height: 5),
+                buildContainer(TranslateHelper.logOut, Icons.logout, onPressed: controller.logOut),
               ],
             ),
           );
@@ -37,20 +39,22 @@ class ProfilePage extends GetView<ProfilePageController> {
       },
       child: Container(
         padding: const EdgeInsets.only(left: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 30),
         height: 60,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Theme.of(Get.context!).cardColor,
+          color: Theme.of(Get.context!).primaryColor,
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Align(
           alignment: Alignment.centerLeft,
           child: Row(
             children: [
-              Icon(icon!, color: Theme.of(Get.context!).iconTheme.color),
+              Icon(icon!, color: Colors.white),
               const SizedBox(width: 15),
               Text(
                 text!,
-                style: Theme.of(Get.context!).textTheme.bodyText1,
+                style: Theme.of(Get.context!).textTheme.bodyText1!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -70,22 +74,44 @@ class ProfilePage extends GetView<ProfilePageController> {
   }
 
   buildThemeSwitch() {
-    return FlutterSwitch(
-      value: Storage.darkThemeEnabled!,
-      onToggle: (value) {
-        controller.onThemeSwitchChanged(value);
-      },
-      activeIcon: const Icon(
-        Icons.dark_mode,
-        color: Colors.black,
+    return Container(
+      padding: const EdgeInsets.only(left: 10, right: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 30),
+      height: 60,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Theme.of(Get.context!).primaryColor,
+        borderRadius: BorderRadius.circular(8),
       ),
-      activeColor: Theme.of(Get.context!).primaryColor,
-      inactiveIcon: const Icon(
-        Icons.light_mode,
-        color: Colors.black,
+      child: Row(
+        children: [
+          const Icon(Icons.dark_mode, color: Colors.white),
+          const SizedBox(width: 15),
+          Text(
+            "Theme",
+            style: Theme.of(Get.context!).textTheme.bodyText1!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          const Spacer(),
+          FlutterSwitch(
+            value: Storage.darkThemeEnabled!,
+            onToggle: (value) {
+              controller.onThemeSwitchChanged(value);
+            },
+            activeIcon: const Icon(
+              Icons.dark_mode,
+              color: Colors.black,
+            ),
+            activeColor: DarkThemeColors.primaryColor,
+            inactiveColor: DarkThemeColors.primaryColor,
+            inactiveIcon: const Icon(
+              Icons.light_mode,
+              color: Colors.black,
+            ),
+            activeSwitchBorder: Border.all(color: Colors.white),
+            inactiveSwitchBorder: Border.all(color: Colors.white),
+          ),
+        ],
       ),
-      activeSwitchBorder: Border.all(color: Colors.white),
-      inactiveSwitchBorder: Border.all(color: Colors.black),
     );
   }
 }

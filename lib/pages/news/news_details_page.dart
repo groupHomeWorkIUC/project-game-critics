@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
+import 'package:project_game_critics/constants/widgets.dart';
 import 'package:project_game_critics/controllers/global_controller/user_controller.dart';
 import 'package:project_game_critics/controllers/screen_controller/news/news_details_controller.dart';
 import 'package:project_game_critics/helpers/themes/colors.dart';
@@ -23,67 +24,63 @@ class NewsDetailsPage extends GetView<NewsDetailsController> {
   buildNewsDetail(BuildContext context) {
     return GetBuilder<NewsDetailsController>(
       builder: (_) {
-        return Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20),
-          child: Visibility(
-            visible: controller.news != null,
-            child: Stack(
-              children: [
-                SingleChildScrollView(
-                  child: controller.news != null
-                      ? Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              controller.news!.releaseDate ?? '',
-                              style: Theme.of(context).textTheme.subtitle1,
+        return controller.isLoading
+            ? ConstantWidgets.circularProgressIndicator
+            : Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20),
+                child: Stack(
+                  children: [
+                    SingleChildScrollView(
+                        child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          controller.news!.releaseDate ?? '',
+                          style: Theme.of(context).textTheme.subtitle1,
+                        ),
+                        Text(
+                          controller.news != null ? controller.news!.title! : '',
+                          style: Theme.of(context).textTheme.headline1,
+                        ),
+                        const SizedBox(height: 20),
+                        Html(
+                          data: controller.news!.content,
+                          style: {
+                            "body": Style(
+                              margin: EdgeInsets.zero,
+                              fontSize: FontSize(Theme.of(Get.context!).textTheme.bodyText1!.fontSize),
+                              fontWeight: Theme.of(Get.context!).textTheme.bodyText1!.fontWeight,
+                              color: Theme.of(Get.context!).textTheme.bodyText1!.color,
                             ),
-                            Text(
-                              controller.news != null ? controller.news!.title! : '',
-                              style: Theme.of(context).textTheme.headline1,
-                            ),
-                            const SizedBox(height: 20),
-                            Html(
-                              data: controller.news!.content,
-                              style: {
-                                "body": Style(
-                                  margin: EdgeInsets.zero,
-                                  fontSize: FontSize(Theme.of(Get.context!).textTheme.bodyText1!.fontSize),
-                                  fontWeight: Theme.of(Get.context!).textTheme.bodyText1!.fontWeight,
-                                  color: Theme.of(Get.context!).textTheme.bodyText1!.color,
-                                ),
-                              },
-                            ),
-                            const SizedBox(height: 20),
-                            buildCommentForm(),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              child: Text(
-                                TranslateHelper.comments,
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context).textTheme.bodyText2,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
-                            const Divider(
-                              thickness: 0.1,
-                              color: Colors.grey,
-                              height: 0.1,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            buildCommentListView(),
-                            const SizedBox(height: 100),
-                          ],
-                        )
-                      : const SizedBox(),
+                          },
+                        ),
+                        const SizedBox(height: 20),
+                        buildCommentForm(),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: Text(
+                            TranslateHelper.comments,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                        ),
+                        const SizedBox(height: 5),
+                        const Divider(
+                          thickness: 0.1,
+                          color: Colors.grey,
+                          height: 0.1,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        buildCommentListView(),
+                        const SizedBox(height: 100),
+                      ],
+                    )),
+                    Positioned(bottom: 20, right: 0, child: buildViewContainer())
+                  ],
                 ),
-                Positioned(bottom: 20, right: 0, child: buildViewContainer())
-              ],
-            ),
-          ),
-        );
+              );
       },
     );
   }
