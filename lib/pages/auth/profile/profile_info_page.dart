@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project_game_critics/constants/constants.dart';
 import 'package:project_game_critics/controllers/screen_controller/auth/profile_info_page_controller.dart';
 import 'package:project_game_critics/helpers/translate_helper.dart';
 
@@ -29,19 +28,17 @@ class ProfileInfoPage extends GetView<ProfileInfoPageController> {
   _buildAppBar() {
     return AppBar(
       elevation: 0,
-      title: const Text('Profile Info'),
+      title: Text(TranslateHelper.profileInfo),
     );
   }
 
   buildInfoContainer(String? leftText, String? rightText) {
     return Container(
       padding: const EdgeInsets.only(left: 10, right: 10),
-      margin: const EdgeInsets.symmetric(horizontal: 30),
       height: 60,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Theme.of(Get.context!).primaryColor,
-        borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

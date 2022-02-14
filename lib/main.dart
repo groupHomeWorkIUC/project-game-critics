@@ -21,7 +21,7 @@ GetMaterialApp materialApp = GetMaterialApp(
   initialRoute: RouteManagement.initialRoute,
   getPages: RouteManagement.routeList,
   debugShowCheckedModeBanner: false,
-  locale: LocalizationService.locale,
+  locale: LocalizationService.turkish,
   fallbackLocale: LocalizationService.fallbackLocale,
   translations: LocalizationService(),
   darkTheme: Themes.darkTheme,

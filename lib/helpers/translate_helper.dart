@@ -23,4 +23,6 @@ class TranslateHelper {
   static String profilePage = "profilePage".tr;
   static String comments = "comments".tr;
   static String informationProfile = "informationProfile".tr;
+  static String theme = "theme".tr;
+  static String profileInfo = "profileInfo".tr;
 }
