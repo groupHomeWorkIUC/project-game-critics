@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_game_critics/helpers/languages/english.dart';
+import 'package:project_game_critics/helpers/languages/turkish.dart';
 
 class LocalizationService extends Translations {
   // Default locale
   static const locale = Locale('en', 'US');
+  static const turkish = Locale('tr', 'TR');
 
   // fallbackLocale saves the day when the locale gets in trouble
   static const fallbackLocale = Locale('en', 'US');
 
   // Supported languages
   // Needs to be same order with locales
-  static final langs = [
-    'English',
-  ];
+  static final langs = ['English', 'Turkish'];
 
   // Supported locales
   // Needs to be same order with langs
   static const locales = [
     Locale('en', 'US'),
+    Locale('tr', 'TR'),
   ];
 
   // Keys and their translations
@@ -26,6 +27,7 @@ class LocalizationService extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': enUS,
+        'tr': trTR,
       };
 
   // Gets locale from language, and updates the locale

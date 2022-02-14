@@ -20,4 +20,6 @@ const Map<String, String> enUS = {
   "profilePage": "Profile",
   "comments": "Comments",
   "informationProfile": "Information Profile",
+  "theme": "Theme",
+  "profileInfo": "Profile Info",
 };

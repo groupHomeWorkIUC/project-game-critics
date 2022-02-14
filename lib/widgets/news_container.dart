@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
+import 'package:html/parser.dart';
 import 'package:project_game_critics/constants/constants.dart';
-import 'package:project_game_critics/helpers/themes/colors.dart';
 import 'package:project_game_critics/models/news.dart';
 
 class NewsContainer extends StatelessWidget {
@@ -19,12 +20,9 @@ class NewsContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Hero(
-            tag: 'news' + news!.id.toString(),
-            child: Image.network(
-              news!.images == null || news!.images!.isEmpty ? Constants.blankImage : news!.images!.first.link!,
-              fit: BoxFit.fitWidth,
-            ),
+          Image.network(
+            news!.images == null || news!.images!.isEmpty ? Constants.blankImage : news!.images!.first.link!,
+            fit: BoxFit.fitWidth,
           ),
           const SizedBox(height: 10),
           Text(
@@ -34,11 +32,23 @@ class NewsContainer extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 5),
-          Text(
+          Html(
+            data: news!.content!.substring(0, news!.content!.length < 250 ? news!.content!.length : 250) + "...",
+            tagsList: Html.tags..remove('img'),
+            style: {
+              "body": Style(
+                margin: EdgeInsets.zero,
+                fontSize: FontSize(Theme.of(Get.context!).textTheme.bodyText1!.fontSize),
+                fontWeight: Theme.of(Get.context!).textTheme.bodyText1!.fontWeight,
+                color: Theme.of(Get.context!).textTheme.bodyText1!.color,
+              ),
+            },
+          ),
+          /*Text(
             news!.content!,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
-          ),
+          ),*/
         ],
       ),
     );

@@ -39,12 +39,10 @@ class ProfilePage extends GetView<ProfilePageController> {
       },
       child: Container(
         padding: const EdgeInsets.only(left: 10),
-        margin: const EdgeInsets.symmetric(horizontal: 30),
         height: 60,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Theme.of(Get.context!).primaryColor,
-          borderRadius: BorderRadius.circular(8),
         ),
         child: Align(
           alignment: Alignment.centerLeft,
@@ -76,19 +74,17 @@ class ProfilePage extends GetView<ProfilePageController> {
   buildThemeSwitch() {
     return Container(
       padding: const EdgeInsets.only(left: 10, right: 10),
-      margin: const EdgeInsets.symmetric(horizontal: 30),
       height: 60,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Theme.of(Get.context!).primaryColor,
-        borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         children: [
           const Icon(Icons.dark_mode, color: Colors.white),
           const SizedBox(width: 15),
           Text(
-            "Theme",
+            TranslateHelper.theme,
             style: Theme.of(Get.context!).textTheme.bodyText1!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           const Spacer(),
